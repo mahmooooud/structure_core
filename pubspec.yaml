@@ -1,7 +1,7 @@
 name: structure_core
 description: A new Flutter plugin project.
 version: 0.0.1
-homepage:
+homepage: https://github.com/mahmooooud/structure_core.git
 
 environment:
   sdk: '>=3.1.1 <4.0.0'
