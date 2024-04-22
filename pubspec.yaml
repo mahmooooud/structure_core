@@ -1,5 +1,5 @@
 name: structure_core
-description: A new Flutter plugin project.
+description: A Flutter clean structure using BLOC and CUBIT.
 version: 0.0.1
 homepage: https://github.com/mahmooooud/structure_core.git
 
@@ -11,7 +11,47 @@ dependencies:
   flutter:
     sdk: flutter
   plugin_platform_interface: ^2.0.2
-
+  flutter_bloc: ^8.1.1
+  equatable: ^2.0.5
+  freezed_annotation: ^2.1.0
+  json_annotation: ^4.6.0
+  get_it: ^7.2.0
+  injectable: ^2.3.2
+  logger: ^2.0.2+1
+  shared_preferences: ^2.0.15
+  dio: ^4.0.6
+  http: ^0.13.5
+  pretty_dio_logger: ^1.1.1
+  flutter_svg: ^2.0.9
+  adaptive_theme: ^3.1.1
+  file_picker: any
+  permission_handler: ^11.0.1
+  device_info_plus: ^8.2.2
+  jiffy: ^5.0.0
+  intl: ^0.18.0
+  flutter_screenutil: ^5.9.0
+  auto_route: ^7.8.4
+  flutter_rounded_date_picker: ^3.0.2
+  fluttertoast: ^8.0.9
+  package_info_plus: any
+  path_provider: ^2.0.11
+  flutter_spinkit: ^5.2.0
+  flutter_easyloading: ^3.0.5
+  open_file: ^3.3.2
+  infinite_scroll_pagination: ^4.0.0
+  pin_code_fields: ^8.0.1
+  dropdown_search: ^5.0.6
+  hijri: ^3.0.0
+  flutter_switch: ^0.3.2
+  tf_dio_cache: ^1.0.1
+  flutter_timezone: ^1.0.8
+  connectivity_plus: ^5.0.2
+  internet_connection_checker: ^1.0.0+1
+  url_launcher: ^6.1.5
+  mime: ^1.0.2
+  shimmer: ^3.0.0
+  cached_network_image: ^3.2.1
+  build_runner: ^2.2.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

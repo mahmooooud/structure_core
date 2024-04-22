@@ -29,7 +29,7 @@ android {
         namespace 'com.future_face.structure_core'
     }
 
-    compileSdkVersion 33
+    compileSdkVersion 34
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
