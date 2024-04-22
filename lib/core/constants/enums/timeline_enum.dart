@@ -1,0 +1,4 @@
+enum TimelineType {
+  GENERAL,
+  CALENDER,
+}
