@@ -26,7 +26,7 @@ class BaseBlocBuilder<T> extends StatelessWidget {
       buildWhen: (previous, current) => previous != current,
       builder: (_, state) {
         return state.maybeWhen(
-          orElse: () => Gaps.empty,
+          orElse: () => SizedBox(width: 0,height: 0,),
           success: (data) {
             return onSuccessWidget(data!);
           },
