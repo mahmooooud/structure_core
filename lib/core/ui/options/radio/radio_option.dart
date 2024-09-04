@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:structure_core/core/common/extension/context.dart';
-
 class RadioOption<T> extends StatelessWidget {
   final T value;
   final T? groupValue;
@@ -43,7 +42,7 @@ class RadioOption<T> extends StatelessWidget {
                       ),
               ),
             ),
-             SizedBox(width: 8.w),
+            const SizedBox(width: 8),
             // selected
             //     ? SvgPicture.asset(
             //         Res.radio_selected,

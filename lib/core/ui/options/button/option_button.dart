@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 import 'package:structure_core/core/common/extension/context.dart';
 import 'package:structure_core/core/common/gaps.dart';
 import 'package:structure_core/core/ui/options/button/option_button_decoration.dart';
 import 'package:structure_core/core/ui/options/controller/option_controller.dart';
-import 'package:provider/provider.dart';
 
 class OptionsButton<T> extends StatefulWidget {
   final String hintText;
@@ -47,7 +46,7 @@ class _OptionsButtonState<T> extends State<OptionsButton<T>> {
               child: Row(
                 children: [if (widget.iconPath != null)
                     SizedBox(
-                      width: 44.w,
+                      width: 44,
                       child: SizedBox.square(
                           dimension: 18,
                           child: SvgPicture.asset(
@@ -69,7 +68,7 @@ class _OptionsButtonState<T> extends State<OptionsButton<T>> {
 
                   /// Suffix
                   Icon(Icons.keyboard_arrow_down_rounded,
-                      size: 20.sp, color: context.colors.secondary)
+                      size: 20, color: context.colors.secondary)
                 ],
               ),
             ),

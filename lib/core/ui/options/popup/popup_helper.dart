@@ -26,7 +26,7 @@ abstract class AppPopupHelper {
                       color: context.colors.black, width: size, height: size),
                 ],
               )),
-           SizedBox(width: 8.w),
+          const SizedBox(width: 8),
           Text(title,
               style: TextStyle(
                   color: context.colors.black, fontSize: 12.sp, fontWeight: FontWeight.w400)),

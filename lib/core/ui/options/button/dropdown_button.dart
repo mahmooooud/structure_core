@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:structure_core/core/common/resource.dart';
+import 'package:structure_core/core/common/dimens.dart';
+import 'package:structure_core/core/common/extension/context.dart';
 import 'package:structure_core/core/ui/options/button/option_button_decoration.dart';
 import 'package:structure_core/core/ui/options/controller/option_controller.dart';
 
@@ -49,7 +49,7 @@ class _AppDropDownButtonState<T> extends State<AppDropDownButton<T>> {
           style:
               Theme.of(context).textTheme.bodyText2!.copyWith(color: context.colors.titleGrey),
         ),
-        icon: Icon(Icons.keyboard_arrow_down_rounded, size: 20.sp, color: context.colors.secondary),
+        icon: Icon(Icons.keyboard_arrow_down_rounded, size: 20, color: context.colors.secondary),
         elevation: 1,
         dropdownColor: context.colors.white,
         selectedItemBuilder: widget.selectedItemBuilder,

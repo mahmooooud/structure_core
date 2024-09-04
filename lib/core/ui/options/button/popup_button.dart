@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:structure_core/core/common/resource.dart';
+import 'package:structure_core/core/common/dimens.dart';
 
 class AppPopupMenuButton<T> extends StatelessWidget {
   final PopupMenuItemBuilder<T> itemBuilder;
@@ -17,7 +16,7 @@ class AppPopupMenuButton<T> extends StatelessWidget {
       splashRadius: Dimens.sheetBorderRadius.topLeft.x,
       elevation: 4.0,
       shape:
-      OutlineInputBorder(borderRadius: BorderRadius.circular(12.r), borderSide: BorderSide.none),
+      OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide.none),
       itemBuilder: itemBuilder,
     );
   }

@@ -57,7 +57,7 @@ class AppSheetButton<T> extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Gaps.vGap8,
+                          SizedBox(height: 8,),
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 24),
                             child: Text(
@@ -67,7 +67,7 @@ class AppSheetButton<T> extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Gaps.vGap8,
+                          SizedBox(height: 8,),
                           Container(
                             height: (context.bodyHeightWithoutAppBar * .4).h,
                             margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
@@ -94,7 +94,7 @@ class AppSheetButton<T> extends StatelessWidget {
                                     Navigator.pop(context);
                                   },
                                 ),
-                                Gaps.hGap8,
+                                SizedBox(width: 8,),
                                 AppTextButton(
                                   width: 80.w,
                                   text: customSaveText ?? Translate.s.save,

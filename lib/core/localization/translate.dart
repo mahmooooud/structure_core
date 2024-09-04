@@ -1,7 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'package:structure_core/core/navigation/base_route.dart';
 import 'package:structure_core/core/navigation/base_route.gr.dart';
-import 'package:structure_core/generated/l10n.dart';
 
 class Translate{
 

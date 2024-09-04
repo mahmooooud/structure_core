@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:structure_core/core/common/resource.dart';
 import 'package:structure_core/core/lib/custom_datetime_picker/flutter_cupertino_datetime_picker.dart';
+import 'package:structure_core/core/lib/custom_datetime_picker/src/date_picker_constants.dart';
 import 'package:structure_core/core/lib/custom_datetime_picker/src/date_picker_theme.dart';
 
-import '../lib/custom_datetime_picker/src/date_picker_constants.dart';
 
 class DateTimePicker extends StatelessWidget {
   final Widget child;
