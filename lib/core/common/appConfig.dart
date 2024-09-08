@@ -12,13 +12,7 @@ import '../localization/localized_name_helper.dart';
 import '../model/language_model/language_model.dart';
 
 class AppConfig extends ChangeNotifier {
-  static final AppConfig _instance = AppConfig._internal();
-
-  factory AppConfig() {
-    return _instance;
-  }
-
-  AppConfig._internal();
+  AppConfig();
 
   late String _tempPath;
 

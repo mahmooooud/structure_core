@@ -4,7 +4,6 @@ import 'package:injectable/injectable.dart';
 import 'package:structure_core/core/constants/enums/http_method.dart';
 import 'package:structure_core/core/lib/blob_attachment/data/data_sources/blob_attachment_datasource.dart';
 import 'package:structure_core/core/lib/blob_attachment/data/model/request_attachment/request_attachment_model.dart';
-import 'package:structure_core/core/net/api_url.dart';
 import 'package:structure_core/core/net/http_client.dart';
 import 'package:structure_core/core/result/result.dart';
 
