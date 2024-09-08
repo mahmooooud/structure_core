@@ -5,7 +5,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 import 'package:structure_core/core/common/extension/context.dart';
-import 'package:structure_core/core/navigation/base_route.dart';
+import 'package:structure_core/core/init_core.dart';
 import 'package:structure_core/core/common/resource.dart';
 
 @lazySingleton
@@ -34,7 +34,7 @@ class LoadingHelper {
   Widget showLoadingView({Color? color}) {
     return Center(
       child: SpinKitFoldingCube(
-        color: color ?? GetIt.I<AppRouter>().navigatorKey.currentContext!.colors.primary,
+        color: color ?? InitCore().context.colors.primary,
         size: 40.0.sp,
       ),
     );
@@ -45,7 +45,7 @@ class LoadingHelper {
   Widget showCatLoadingView({Color? color}) {
     return Center(
       child: SpinKitRipple(
-        color: color ?? GetIt.I<AppRouter>().navigatorKey.currentContext!.colors.primary,
+        color: color ?? InitCore().context.colors.primary,
         size: 40.0.sp,
       ),
     );

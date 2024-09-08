@@ -5,7 +5,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:structure_core/core/common/extension/context.dart';
 import 'package:structure_core/core/common/gaps.dart';
 import 'package:structure_core/core/localization/translate.dart';
-import 'package:structure_core/core/navigation/base_route.gr.dart';
 import 'package:structure_core/core/ui/app_button.dart';
 
 class PageErrorView extends StatelessWidget {

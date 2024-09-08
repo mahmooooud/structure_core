@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:structure_core/core/common/appConfig.dart';
-import 'package:structure_core/core/navigation/base_route.dart';
 import 'package:structure_core/core/theme/color/_app_colors_dark.dart';
 import 'package:structure_core/core/theme/color/_app_colors_light.dart';
 
@@ -10,14 +9,7 @@ abstract class AppColors {
   static final AppColorsDark _dark = AppColorsDark();
   static final AppColorsLight _light = AppColorsLight();
 
-  static AppColors get noContextInstance => GetIt.I<AppRouter>()
-          .navigatorKey
-          .currentContext!
-          .read<AppConfig>()
-          .currentThemeEnum
-          .isDark
-      ? _dark
-      : _light;
+  static AppColors get noContextInstance =>  _light;
 
   static AppColors of(BuildContext context) =>
       context.read<AppConfig>().currentThemeEnum.isDark ? _dark : _light;

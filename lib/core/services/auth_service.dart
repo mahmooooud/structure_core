@@ -6,14 +6,11 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:get_it/get_it.dart';
 import 'package:structure_core/core/datasource/isp_helper.dart';
-import 'package:structure_core/core/navigation/base_route.gr.dart'  as router;
-
 // import 'package:openid_client/openid_client.dart';
 // import 'package:openid_client/openid_client_io.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'dart:async';
 
-import '../navigation/base_route.dart';
 
 class AuthService {
   AuthService();
