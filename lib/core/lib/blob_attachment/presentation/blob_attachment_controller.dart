@@ -2,7 +2,6 @@ part of 'blob_attachment_imports.dart';
 
 class BlobAttachmentController extends BaseController {
   static const routeName = "Route";
-  var prefs = GetIt.I<ISpHelper>();
   BlobAttachmentController();
   BaseBloc<File?> uploadedRequestAttachmentsBloc = BaseBloc(null);
   GenericBloc<bool> gettingAttachments = GenericBloc(false);

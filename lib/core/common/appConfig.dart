@@ -7,7 +7,6 @@ import 'package:structure_core/core/model/icon_model/icon_model.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:path_provider/path_provider.dart';
 
-import '../datasource/isp_helper.dart';
 import '../localization/localized_name_helper.dart';
 import '../model/language_model/language_model.dart';
 
@@ -90,35 +89,7 @@ class AppConfig extends ChangeNotifier {
     _supportedLanguages = value;
   }
 
-  Future<void> initApp(String env) async {
-    _env = env;
-    final savedThemeMode = await AdaptiveTheme.getThemeMode();
-    _currentThemeEnum = savedThemeMode ?? AdaptiveThemeMode.system;
 
-    /// get version
-    final packageInfo = await PackageInfo.fromPlatform();
-    _currentVersion = packageInfo.version;
-    _buildNumber = packageInfo.buildNumber;
-    _appName = packageInfo.appName;
-    await getTemporaryDirectoryPath();
-    _fontSize = GetIt.I<ISpHelper>().fontSize;
-  }
-  
-  /// this method to change language depends on API and [notifyListeners] to notify all widgets
-  Future<void> changeLanguage(String selectedLang) async {
-    var prefs = GetIt.I<ISpHelper>();
-    if (_appLocale != null) {
-      if (_appLocale!.languageCode == selectedLang) {
-        return;
-      }
-    }
-    _appLocale = Locale(selectedLang);
-    if (localizedNameHelper != null) {
-      localizedNameHelper = localizedNameHelper!.copyWith(currentLanguage: selectedLang);
-    }
-    await prefs.writeAppLang(selectedLang);
-    notifyListeners();
-  }
 
   AdaptiveThemeMode? _currentThemeEnum;
 
