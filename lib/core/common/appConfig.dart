@@ -96,7 +96,21 @@ class AppConfig extends ChangeNotifier {
     _supportedLanguages = value;
   }
 
-
+  /// this method to change language depends on API and [notifyListeners] to notify all widgets
+  Future<void> changeLanguage(String selectedLang) async {
+    var prefs = GetIt.I<ISpHelper>();
+    if (_appLocale != null) {
+      if (_appLocale!.languageCode == selectedLang) {
+        return;
+      }
+    }
+    _appLocale = Locale(selectedLang);
+    if (localizedNameHelper != null) {
+      localizedNameHelper = localizedNameHelper!.copyWith(currentLanguage: selectedLang);
+    }
+    await prefs.writeAppLang(selectedLang);
+    notifyListeners();
+  }
 
   AdaptiveThemeMode? _currentThemeEnum;
 
