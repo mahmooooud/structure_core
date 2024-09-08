@@ -96,6 +96,20 @@ class AppConfig extends ChangeNotifier {
     _supportedLanguages = value;
   }
 
+  Future<void> initApp(String env) async {
+    _env = env;
+    final savedThemeMode = await AdaptiveTheme.getThemeMode();
+    _currentThemeEnum = savedThemeMode ?? AdaptiveThemeMode.system;
+
+    /// get version
+    final packageInfo = await PackageInfo.fromPlatform();
+    _currentVersion = packageInfo.version;
+    _buildNumber = packageInfo.buildNumber;
+    _appName = packageInfo.appName;
+    await getTemporaryDirectoryPath();
+    _fontSize = GetIt.I<ISpHelper>().fontSize;
+  }
+  
   /// this method to change language depends on API and [notifyListeners] to notify all widgets
   Future<void> changeLanguage(String selectedLang) async {
     var prefs = GetIt.I<ISpHelper>();
