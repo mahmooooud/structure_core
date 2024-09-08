@@ -6,6 +6,7 @@ import 'package:flutter_rounded_date_picker/flutter_rounded_date_picker.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:structure_core/core/common/extension/context.dart';
 import 'package:structure_core/core/common/resource.dart';
+import 'package:structure_core/core/theme/color/app_colors.dart';
 import 'package:structure_core/core/ui/cupertino_date_picker/cupertino_date_picker.dart';
 
 class AdaptivePicker {
@@ -48,7 +49,7 @@ class AdaptivePicker {
         borderRadius: 16,
         height: 300,
         theme: ThemeData.light().copyWith(
-          primaryColor: context.colors.white,
+          primaryColor: AppColors.of(context).white,
           backgroundColor: Colors.white,
           buttonTheme:
           const ButtonThemeData(textTheme: ButtonTextTheme.primary),

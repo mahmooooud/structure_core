@@ -14,6 +14,7 @@ class MainContainer extends StatelessWidget {
       this.border,
       this.offset1,
       this.padding,
+      this.margin,
       this.offset2,
       this.elevation = true,
       this.decoration,
@@ -32,11 +33,13 @@ class MainContainer extends StatelessWidget {
   BoxDecoration? decoration;
 
   EdgeInsetsGeometry? padding;
+  EdgeInsetsGeometry? margin;
   final bool? elevation;
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: padding ?? const EdgeInsets.all(16),
+      margin: margin,
       clipBehavior: Clip.antiAliasWithSaveLayer,
       height: height,
       width: width ?? double.infinity,
