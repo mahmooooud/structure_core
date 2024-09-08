@@ -24,6 +24,7 @@ class AppTextFormField extends StatelessWidget {
   final EdgeInsetsGeometry? contentPadding;
   final bool autofocus;
   final int? maxlines;
+  final int? maxLength;
   final BorderRadius? borderRadius;
   final Color? focsColor;
   final Color? enableColor;
@@ -45,6 +46,7 @@ class AppTextFormField extends StatelessWidget {
     this.prefIcon,
     this.obscureText = false,
     this.enabled = true,
+    this.maxLength,
     this.inputFormatters,
     this.hintText,
     this.autofillHints,
@@ -76,6 +78,7 @@ class AppTextFormField extends StatelessWidget {
       focusNode: focusNode,
       autofillHints: autofillHints,
       maxLines: maxlines,
+      maxLength: maxLength,
       enabled: enabled,
       enableSuggestions: true,
       toolbarOptions: ToolbarOptions(
