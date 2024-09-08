@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 
 class InitCore {
-    late BuildContext context;
+  late BuildContext context;
 
-  static final InitCore _inst = InitCore._internal(BuildContext as BuildContext);
+  static final InitCore _inst = InitCore._internal();
 
-  InitCore._internal(BuildContext appContext){
-    context = appContext;
-  }
+  InitCore._internal();
 
   factory InitCore() {
     return _inst;
+  }
+
+  initContext(BuildContext context){
+    this.context = context;
   }
 }
