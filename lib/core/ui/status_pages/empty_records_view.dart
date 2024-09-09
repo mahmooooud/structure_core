@@ -6,10 +6,9 @@ import 'package:structure_core/core/ui/app_button.dart';
 
 class EmptyRecordsView extends StatelessWidget {
   final Function() onTap;
-  final Color primary;
   final String emptyRecords;
   final String actionText;
-  const EmptyRecordsView({Key? key, required this.onTap, required this.primary, required this.emptyRecords, required this.actionText}) : super(key: key);
+  const EmptyRecordsView({Key? key, required this.onTap, required this.emptyRecords, required this.actionText}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +26,7 @@ class EmptyRecordsView extends StatelessWidget {
               Text(
                 emptyRecords,
                 style: Theme.of(context).textTheme.headline3!.copyWith(
-                  color: primary,
+                  color: Theme.of(context).colorScheme.primary,
                 ),
               ),
               Gaps.vGap16,
