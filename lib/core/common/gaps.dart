@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import 'dimens.dart';
+import 'package:structure_core/core/common/dimens.dart';
 
 class Gaps {
   const Gaps._();

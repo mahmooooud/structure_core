@@ -1,4 +1,3 @@
-import 'package:structure_core/core/localization/translate.dart';
 import './base_error.dart';
 
 class CancelError extends BaseError {
@@ -6,6 +5,6 @@ class CancelError extends BaseError {
 
   @override
   String toString() {
-    return Translate.s.error_cancel_token;
+    return "The connection is interrupted";
   }
 }

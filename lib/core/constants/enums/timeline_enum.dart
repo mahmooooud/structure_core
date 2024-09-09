@@ -1,4 +1,0 @@
-enum TimelineType {
-  GENERAL,
-  CALENDER,
-}

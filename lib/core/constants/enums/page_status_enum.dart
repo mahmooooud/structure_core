@@ -1,1 +1,0 @@
-enum PageStatusEnum { ADD, EDIT }

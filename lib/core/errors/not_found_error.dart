@@ -1,4 +1,3 @@
-import 'package:structure_core/core/localization/translate.dart';
 
 import 'base_error.dart';
 
@@ -9,7 +8,7 @@ class NotFoundError extends BaseError {
 
   @override
   String toString() {
-    return message ?? Translate.s.error_NotFound_Error;
+    return message ?? "PAGE NOT FOUND";
   }
 
   @override

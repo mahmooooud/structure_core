@@ -1,4 +1,3 @@
-import 'package:structure_core/core/localization/translate.dart';
 
 import 'base_error.dart';
 
@@ -7,7 +6,7 @@ class SocketError extends BaseError {
 
   @override
   String toString() {
-    return Translate.s.error_socket;
+    return "No internet connection";
   }
 
 }

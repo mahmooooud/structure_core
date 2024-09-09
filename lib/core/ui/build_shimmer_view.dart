@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:structure_core/core/common/extension/context.dart';
 import 'package:shimmer/shimmer.dart';
 
 class BuildShimmerView extends StatelessWidget {
@@ -24,14 +23,14 @@ class BuildShimmerView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
-      baseColor: bColor ?? context.colors.primary.withOpacity(.5),
-      highlightColor: hColor ?? context.colors.primary.withOpacity(.3),
+      baseColor: bColor ?? Theme.of(context).colorScheme.primary.withOpacity(.5),
+      highlightColor: hColor ?? Theme.of(context).colorScheme.primary.withOpacity(.3),
       child: Container(
         margin: margin,
         width: width ?? MediaQuery.of(context).size.width,
         height: height.h,
         decoration: BoxDecoration(
-          color: context.colors.primary.withOpacity(.3),
+          color: Theme.of(context).colorScheme.primary.withOpacity(.3),
           borderRadius: BorderRadius.circular(10.r),
           shape: boxShape ?? BoxShape.rectangle,
         ),

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:structure_core/core/common/extension/context.dart';
-import 'package:structure_core/core/theme/color/app_colors.dart';
 
 class AppTextButton extends StatelessWidget {
   const AppTextButton({
@@ -12,75 +10,69 @@ class AppTextButton extends StatelessWidget {
     this.isTransparentBackground = false,
     this.enabled = true,
     this.color,
-    this.textColor,
-    this.borderColors,
-    this.titleWidget,
-    this.padding,
   }) : super(key: key);
 
   final String text;
-  final Widget? titleWidget;
   final bool enabled;
   final VoidCallback? onPressed;
   final double? width;
-  final EdgeInsetsGeometry? padding;
   final bool isTransparentBackground;
   final Color? color;
-  final Color? textColor;
-  final Color? borderColors;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: padding ?? EdgeInsets.symmetric(vertical: 5.h),
-      width: width ?? double.infinity,
+      padding: EdgeInsets.symmetric(vertical: 10.h),
+      width: width ?? 310.w,
       child: BouncingWidget(
         enable: enabled && onPressed != null,
         child: TextButton(
           style: Theme.of(context).textButtonTheme.style!.copyWith(
-              foregroundColor: MaterialStateProperty.resolveWith(
-            (_) {
-              if (isTransparentBackground) {
-                return Colors.transparent;
-              }
-              return AppColors.of(context).primaryLight;
-            },
-          ), backgroundColor: MaterialStateProperty.resolveWith(
-            (states) {
-              if (color != null) {
-                return color;
-              }
-              if (borderColors == null) {
-                if(isTransparentBackground){
+            foregroundColor: MaterialStateProperty.resolveWith(
+              (_) {
+                if (isTransparentBackground) {
                   return Colors.transparent;
                 }
-              }else{
-                return color;
-              }
-              if (enabled) {
-                return AppColors.of(context).primaryLight;
-              } else {
-                return AppColors.of(context).primaryLight.withOpacity(0.5);
-              }
-            },
-          ), shape: MaterialStateProperty.resolveWith((states) {
-            if (isTransparentBackground) {
-              return RoundedRectangleBorder(
-                  side: BorderSide(color: borderColors ?? AppColors.of(context).primary),
-                  borderRadius: BorderRadius.circular(5.r));
-            }
-          })),
-          onPressed: onPressed,
-          child: titleWidget ??
-              Text(
-                text,
-                style: context.textTheme.headline6!.copyWith(
-                  color: isTransparentBackground
-                      ? textColor ?? AppColors.of(context).primaryLight
-                      : textColor ?? AppColors.of(context).white,
-                  fontWeight: FontWeight.w500,
+                return Theme.of(context).colorScheme.primary;
+              },
+            ),
+            backgroundColor: MaterialStateProperty.resolveWith(
+              (states) {
+                if (color != null) {
+                  return color;
+                }
+                if (isTransparentBackground) {
+                  return Colors.transparent;
+                }
+                if (enabled) {
+                  return Theme.of(context).colorScheme.primary;
+                } else {
+                  return Colors.grey.withOpacity(0.12);
+                }
+              },
+            ),
+            shape: MaterialStateProperty.resolveWith((states) {
+              if (isTransparentBackground) {
+                return  RoundedRectangleBorder(side: BorderSide(
+                    color: Theme.of(context).colorScheme.primary
                 ),
-              ),
+                borderRadius: BorderRadius.circular(5)
+                );
+              }
+            })
+          ),
+          onPressed: onPressed,
+          child: Text(
+            text,
+            style: Theme.of(context).textTheme.headline6!.copyWith(
+              color: isTransparentBackground
+                  ? Theme.of(context).colorScheme.onPrimary
+                  : (enabled
+                      ? Colors.white
+                      : Colors.grey.withOpacity(0.4)),
+              fontWeight: FontWeight.w500,
+            ),
+          ),
         ),
       ),
     );

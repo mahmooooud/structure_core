@@ -1,4 +1,3 @@
-import 'package:structure_core/core/localization/translate.dart';
 
 import 'base_error.dart';
 
@@ -7,6 +6,6 @@ class ConflictError extends BaseError {
 
   @override
   String toString() {
-    return Translate.s.error_conflict;
+    return "Conflict error";
   }
 }

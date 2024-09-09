@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../errors/base_error.dart';
+import 'package:structure_core/core/errors/base_error.dart';
 import 'base_state.dart';
 
 class BaseBloc<T> extends Cubit<BaseState<T>> {
