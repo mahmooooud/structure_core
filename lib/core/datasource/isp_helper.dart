@@ -1,5 +1,5 @@
 
-abstract class ISpHelper {
+abstract class ICoreSpHelper {
   /// deleteToken
   Future<void> deleteToken();
 
