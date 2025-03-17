@@ -39,7 +39,7 @@ dependencies:
   flutter_svg: ^2.0.9
   flutter_widget_from_html: ^0.14.9
   pdfx: ^2.8.0
-  signature: ^5.5.0
+  # signature: ^5.5.0
   flutter_datetime_picker: ^1.5.1
   local_auth: ^2.3.0
 
