@@ -1,3 +1,4 @@
+import 'package:ndf/core/localization/translate.dart';
 
 import 'base_error.dart';
 
@@ -6,7 +7,6 @@ class UnknownError extends BaseError {
 
   @override
   String toString() {
-    return "Unknown error happened";
+    return Translate.s.error_unknown_happened;
   }
-
 }

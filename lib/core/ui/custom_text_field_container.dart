@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:structure_core/core/ui/custom_text_form_field.dart';
+import 'package:ndf/core/ui/custom_text_form_field.dart';
 
 class CustomTextFieldContainer extends StatelessWidget {
   final CustomTextFormField? textFieldWidget;

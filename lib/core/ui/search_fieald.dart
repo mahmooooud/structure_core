@@ -1,56 +1,44 @@
+import 'package:ndf/core/bloc/generic_cubit/generic_cubit.dart';
+import 'package:ndf/core/common/resource.dart';
+import 'package:ndf/core/localization/translate.dart';
+import 'package:ndf/core/ui/custom_text_form_field.dart';
+import 'package:ndf/core/ui/svg_assets.dart';
+import 'package:ndf/res.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-
 class SearchTextField extends StatelessWidget {
+  final TextEditingController controller;
+  final Function()? onChangeAction;
+  final Function()? onEditingComplete;
+  final Function()? suffixIconAction;
+  final TextInputAction? textInputAction;
   const SearchTextField({
     Key? key,
+    required this.controller,
+    this.suffixIcon,
+    this.onChangeAction,
+    this.onEditingComplete,
+    this.textInputAction,
+    this.suffixIconAction,
   }) : super(key: key);
+  final String? suffixIcon;
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      decoration: InputDecoration(
-        fillColor: Colors.white,
-        prefixIcon: Icon(
-          Icons.search,
-          size: 24,
-          color: Theme.of(context).colorScheme.tertiary,
-        ),
-        filled: true,
-        contentPadding:
-            const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
-        hintText: 'search_hint',
-        hintStyle: Theme.of(context).textTheme.bodyText1!.copyWith(
-            color: Theme.of(context).colorScheme.tertiary,
-            fontWeight: FontWeight.normal,
-            fontSize: 16,
-            fontFamily: 'CAIRO'),
-        border: OutlineInputBorder(
-          borderRadius: const BorderRadius.all(Radius.circular(12)),
-          borderSide: BorderSide(color: Colors.white, width: 1),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: const BorderRadius.all(Radius.circular(12)),
-          borderSide: BorderSide(color: Colors.white, width: 1),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: const BorderRadius.all(Radius.circular(12)),
-          borderSide: BorderSide(color: Colors.white, width: 1),
-        ),
-        errorBorder: OutlineInputBorder(
-          borderRadius: const BorderRadius.all(const Radius.circular(12)),
-          borderSide:
-              BorderSide(color: Theme.of(context).colorScheme.error, width: 1),
-        ),
-        focusedErrorBorder: const OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(12)),
-          borderSide: BorderSide(color: Colors.red, width: 1),
-        ),
-        disabledBorder: OutlineInputBorder(
-          borderRadius: const BorderRadius.all(Radius.circular(12)),
-          borderSide: BorderSide(color: Colors.white, width: 1),
-        ),
-      ),
+    return CustomTextFormField(
+      isValid: GenericBloc(),
+      hint: Translate.s.search,
+      onSave: (text) {},
+      onChange: (value) {
+        onChangeAction?.call();
+      },
+      onEditingComplete: onEditingComplete,
+      inputType: TextInputType.text,
+      controller: controller,
+      label: null,
+      textInputAction: textInputAction,
+      prefixIcon: SvgAssets.getWidget(Res.search),
     );
   }
 }

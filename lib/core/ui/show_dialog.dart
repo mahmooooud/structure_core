@@ -1,3 +1,4 @@
+import 'package:ndf/core/utils/enum.dart';
 import 'package:flutter/material.dart';
 
 class ShowDialog {
@@ -14,7 +15,9 @@ class ShowDialog {
         final Widget pageChild = Builder(builder: builder);
         return SafeArea(
           child: Builder(builder: (BuildContext context) {
-            return theme != null ? Theme(data: theme, child: pageChild) : pageChild;
+            return theme != null
+                ? Theme(data: theme, child: pageChild)
+                : pageChild;
           }),
         );
       },
@@ -26,8 +29,11 @@ class ShowDialog {
     );
   }
 
-  Widget _buildMaterialDialogTransitions(BuildContext context, Animation<double> animation,
-      Animation<double> secondaryAnimation, Widget child) {
+  Widget _buildMaterialDialogTransitions(
+      BuildContext context,
+      Animation<double> animation,
+      Animation<double> secondaryAnimation,
+      Widget child) {
     return FadeTransition(
       opacity: CurvedAnimation(
         parent: animation,
@@ -37,41 +43,41 @@ class ShowDialog {
     );
   }
 
-  Future<T?> showElasticDialog<T>({
-    required BuildContext context,
-    bool barrierDismissible = true,
-    required WidgetBuilder builder,
-  }) {
+  Future<T?> showElasticDialog<T>(
+      {required BuildContext context,
+      bool barrierDismissible = true,
+      required Widget builder,
+      EdgeInsets? insetPadding}) {
     final ThemeData? theme = Theme.of(context);
-    return showGeneralDialog(
+    return showDialog(
       context: context,
-      pageBuilder: (BuildContext buildContext, Animation<double> animation,
-          Animation<double> secondaryAnimation) {
-        final Widget pageChild = Builder(builder: builder);
-        return SafeArea(
-          child: Builder(builder: (BuildContext context) {
-            return theme != null ? Theme(data: theme, child: pageChild) : pageChild;
-          }),
-        );
-      },
       barrierDismissible: barrierDismissible,
       barrierLabel: MaterialLocalizations.of(context).modalBarrierDismissLabel,
       barrierColor: Colors.black54,
-      transitionDuration: const Duration(milliseconds: 550),
-      transitionBuilder: _buildDialogTransitions,
+      builder: (BuildContext context) {
+        return Dialog(
+            insetPadding: insetPadding ?? const EdgeInsets.all(18),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(RadiusEnum.radius_lr)),
+            clipBehavior: Clip.antiAliasWithSaveLayer,
+            child: builder);
+      },
     );
   }
 
-  Widget _buildDialogTransitions(BuildContext context, Animation<double> animation,
-      Animation<double> secondaryAnimation, Widget child) {
+  Widget _buildDialogTransitions(
+      BuildContext context,
+      Animation<double> animation,
+      Animation<double> secondaryAnimation,
+      Widget child) {
     return FadeTransition(
       opacity: CurvedAnimation(
         parent: animation,
         curve: Curves.easeOut,
       ),
       child: SlideTransition(
-        position:
-            Tween<Offset>(begin: const Offset(0.0, 0.3), end: Offset.zero).animate(CurvedAnimation(
+        position: Tween<Offset>(begin: const Offset(0.0, 0.3), end: Offset.zero)
+            .animate(CurvedAnimation(
           parent: animation,
           curve: const ElasticOutCurve(0.85),
           reverseCurve: Curves.easeOutBack,

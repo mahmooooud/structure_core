@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ndf/core/common/resource.dart';
 
 class CustomInputDecoration extends InputDecoration {
   final BuildContext context;
@@ -39,14 +40,16 @@ class CustomInputDecoration extends InputDecoration {
 
   @override
   InputBorder get enabledBorder => OutlineInputBorder(
-        borderSide: BorderSide(color: enableColor ?? Theme.of(context).colorScheme.primary, width: 1),
+        borderSide:
+            BorderSide(color: enableColor ?? context.colors.primary, width: 1),
         borderRadius: borderRadius ?? BorderRadius.circular(8),
       );
 
   @override
   InputBorder get focusedBorder => OutlineInputBorder(
       borderRadius: borderRadius ?? BorderRadius.circular(8),
-      borderSide: BorderSide(color: focusColor ?? Theme.of(context).colorScheme.primary, width: 1));
+      borderSide:
+          BorderSide(color: focusColor ?? context.colors.primary, width: 1));
 
   @override
   InputBorder get errorBorder => OutlineInputBorder(
@@ -59,7 +62,7 @@ class CustomInputDecoration extends InputDecoration {
       borderSide: const BorderSide(color: Colors.red, width: 2));
 
   @override
-  TextStyle get errorStyle => Theme.of(context).textTheme.bodyText1!.copyWith(
+  TextStyle get errorStyle => context.textTheme.bodyMedium!.copyWith(
         color: Colors.red,
       );
 
@@ -75,19 +78,19 @@ class CustomInputDecoration extends InputDecoration {
         );
 
   @override
-  TextStyle get labelStyle => Theme.of(context).textTheme.bodyText1!.copyWith(
-        color: Theme.of(context).colorScheme.onPrimary,fontSize: 14,fontWeight: FontWeight.w400
+  TextStyle get labelStyle => context.textTheme.bodyMedium!.copyWith(
+      color: context.colors.titleGrey,
+      fontSize: 14,
+      fontWeight: FontWeight.w400);
+
+  @override
+  TextStyle? get floatingLabelStyle => context.textTheme.bodyMedium!.copyWith(
+        color: context.colors.titleGrey,
       );
 
   @override
-  TextStyle? get floatingLabelStyle => Theme.of(context).textTheme.bodyText1!.copyWith(
-        color: Theme.of(context).colorScheme.onPrimary,
-      );
-
-  @override
-  TextStyle? get hintStyle => Theme.of(context).textTheme.headline4!.copyWith(
-        color: Theme.of(context).colorScheme.onPrimary,fontSize: 14
-      );
+  TextStyle? get hintStyle => context.textTheme.bodyMedium!
+      .copyWith(color: context.colors.titleGrey, fontSize: 14);
 
   @override
   EdgeInsetsGeometry get contentPadding =>

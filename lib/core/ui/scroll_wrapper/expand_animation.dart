@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:structure_core/core/ui/scroll_wrapper/scroll_wrapper.dart';
+import 'package:ndf/core/ui/scroll_wrapper/scroll_wrapper.dart';
 
 class AnimatePrompt extends StatefulWidget {
   const AnimatePrompt(
       {required this.expand,
-        required this.child,
-        required this.animType,
-        required this.curve,
-        required this.duration,
-        required this.alignment,
-        Key? key})
+      required this.child,
+      required this.animType,
+      required this.curve,
+      required this.duration,
+      required this.alignment,
+      Key? key})
       : super(key: key);
   final Widget child;
   final bool expand;

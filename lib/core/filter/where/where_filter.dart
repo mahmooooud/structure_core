@@ -1,4 +1,4 @@
-import 'package:structure_core/core/filter/base/base_filter_part.dart';
+import 'package:ndf/core/filter/base/base_filter_part.dart';
 
 // enum s{Active(1),Archive(2) all(null)}
 class WhereFilter implements BaseFilterPart {

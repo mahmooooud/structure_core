@@ -1,3 +1,4 @@
+import 'package:ndf/core/localization/translate.dart';
 import 'base_error.dart';
 
 class InternalServerError extends BaseError {
@@ -7,7 +8,7 @@ class InternalServerError extends BaseError {
 
   @override
   String toString() {
-    return message ?? "INTERNAL SERVER ERROR";
+    return message ?? Translate.s.error_internal_server;
   }
 
   @override

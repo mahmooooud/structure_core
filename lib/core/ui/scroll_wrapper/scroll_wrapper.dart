@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:structure_core/core/ui/scroll_wrapper/expand_animation.dart';
+import 'package:ndf/core/common/extension/context.dart';
+import 'package:ndf/core/ui/scroll_wrapper/expand_animation.dart';
 
 typedef ReplacementBuilder = Widget Function(
     BuildContext context, VoidCallback function);
@@ -33,10 +34,10 @@ class ScrollWrapper extends StatefulWidget {
     this.promptAnimationType = PromptAnimation.size,
     this.promptReplacementBuilder,
   })  : assert(
-  !(scrollController != null && primary == true),
-  'Primary ScrollViews obtain their ScrollController via inheritance from a PrimaryScrollController widgets. '
-      'You cannot both set primary to true and pass an explicit controller.',
-  ),
+          !(scrollController != null && primary == true),
+          'Primary ScrollViews obtain their ScrollController via inheritance from a PrimaryScrollController widgets. '
+          'You cannot both set primary to true and pass an explicit controller.',
+        ),
         primary = primary ??
             scrollController == null &&
                 identical(scrollDirection, Axis.vertical),
@@ -144,13 +145,18 @@ class ScrollWrapperState extends State<ScrollWrapper> {
   @override
   void initState() {
     super.initState();
-    _promptTheme = widget.promptTheme ?? PromptButtonTheme(
-      icon: Icon(Icons.arrow_upward, color: Theme.of(context).colorScheme.primary,size: 15.sp,),
-      color: Colors.white,
-      elevation: 5,
-      iconPadding: const EdgeInsets.all(10).r,
-      padding: const EdgeInsets.symmetric(vertical: 30,horizontal: 20).r,
-    );
+    _promptTheme = widget.promptTheme ??
+        PromptButtonTheme(
+          icon: Icon(
+            Icons.arrow_upward,
+            color: context.colors.primary,
+            size: 15.sp,
+          ),
+          color: context.colors.white,
+          elevation: 5,
+          iconPadding: const EdgeInsets.all(10).r,
+          padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 20).r,
+        );
     _promptAlignment = widget.promptAlignment ?? _setPromptAlignment();
   }
 
@@ -221,7 +227,7 @@ class ScrollWrapperState extends State<ScrollWrapper> {
   /// Get position of a child [ScrollViewCustom] if it exists.
   ScrollPosition get _position =>
       _scrollStateKey.currentState?.position ??
-          _scrollController.positions.first;
+      _scrollController.positions.first;
 
   void _listen() {
     // Check state if:
@@ -310,7 +316,7 @@ class ScrollWrapperState extends State<ScrollWrapper> {
   }
 
   final GlobalKey<ScrollableState> _scrollStateKey =
-  GlobalKey<ScrollableState>();
+      GlobalKey<ScrollableState>();
 
   @override
   Widget build(BuildContext context) {
@@ -336,32 +342,32 @@ class ScrollWrapperState extends State<ScrollWrapper> {
             child: widget.promptReplacementBuilder != null
                 ? widget.promptReplacementBuilder!(context, scrollToTop)
                 : Padding(
-              padding: _promptTheme.padding,
-              child: Material(
-                elevation: _promptTheme.elevation ??
-                    Theme.of(context).appBarTheme.elevation ??
-                    4,
-                clipBehavior: Clip.antiAlias,
-                type: MaterialType.circle,
-                color: _promptTheme.color ??
-                    Theme.of(context).appBarTheme.backgroundColor ??
-                    Theme.of(context).primaryColor,
-                child: InkWell(
-                  onTap: scrollToTop,
-                  child: Padding(
-                    padding: _promptTheme.iconPadding,
-                    child: _promptTheme.icon ??
-                        Icon(
-                          _getDefaultIcon(),
-                          color: Theme.of(context)
-                              .appBarTheme
-                              .foregroundColor ??
-                              Colors.white,
+                    padding: _promptTheme.padding,
+                    child: Material(
+                      elevation: _promptTheme.elevation ??
+                          Theme.of(context).appBarTheme.elevation ??
+                          4,
+                      clipBehavior: Clip.antiAlias,
+                      type: MaterialType.circle,
+                      color: _promptTheme.color ??
+                          Theme.of(context).appBarTheme.backgroundColor ??
+                          Theme.of(context).primaryColor,
+                      child: InkWell(
+                        onTap: scrollToTop,
+                        child: Padding(
+                          padding: _promptTheme.iconPadding,
+                          child: _promptTheme.icon ??
+                              Icon(
+                                _getDefaultIcon(),
+                                color: Theme.of(context)
+                                        .appBarTheme
+                                        .foregroundColor ??
+                                    Colors.white,
+                              ),
                         ),
+                      ),
+                    ),
                   ),
-                ),
-              ),
-            ),
           ),
         ),
       ],
@@ -399,10 +405,10 @@ class PromptButtonTheme {
 class ScrollViewProperties {
   const ScrollViewProperties._generateProperties(
       {required this.reverse,
-        required this.primary,
-        required this.scrollDirection,
-        required ScrollController scrollController,
-        required this.scrollStateKey})
+      required this.primary,
+      required this.scrollDirection,
+      required ScrollController scrollController,
+      required this.scrollStateKey})
       : _scrollController = scrollController;
   final ScrollController _scrollController;
   final bool reverse;

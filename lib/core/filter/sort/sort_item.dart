@@ -1,4 +1,4 @@
-import 'package:structure_core/core/constants/enums/order_enum.dart';
+import 'package:ndf/core/constants/enums/order_enum.dart';
 
 class SortItem {
   final String propName;

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:structure_core/core/common/custom_input_decoration.dart';
+import 'package:ndf/core/common/custom_input_decoration.dart';
+import 'package:ndf/core/common/extension/context.dart';
+import 'package:ndf/core/localization/translate.dart';
 
 import 'custom_dropDown/CustomDropDown.dart';
 
@@ -80,34 +82,34 @@ class DropdownTextField<T> extends StatelessWidget {
           child: Icon(
             Icons.clear,
             size: 20,
-            color: Theme.of(context).colorScheme.primary,
+            color: context.colors.primary,
           ),
         ),
         dropDownButton: Padding(
           padding: arrowBtnPadding ?? const EdgeInsets.symmetric(horizontal: 5),
           child: Icon(Icons.arrow_drop_down,
-              size: 24, color: buttonsColor ?? Theme.of(context).colorScheme.primary),
+              size: 24, color: buttonsColor ?? context.colors.primary),
         ),
         selectedItem: selectedItem,
         itemAsString: itemAsString,
         autoValidateMode: AutovalidateMode.onUserInteraction,
         showSelectedItem: showSelectedItem,
-        style: Theme.of(context).textTheme.titleLarge!,
-        searchBoxStyle: Theme.of(context).textTheme.titleLarge!,
+        style: context.textTheme.titleLarge!,
+        searchBoxStyle: context.textTheme.titleLarge!,
         searchBoxDecoration: CustomInputDecoration(
             context: context,
-            hint: searchHint ?? "Search",
+            hint: searchHint ?? Translate.s.search,
             enableColor: Colors.black,
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10)),
         popupTitle: Container(
           height: 50,
           decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.primary,
+            color: context.colors.primary,
           ),
           child: Center(
             child: Text(
               label != null ? label! : hint!,
-              style: Theme.of(context).textTheme.labelLarge?.copyWith(
+              style: context.textTheme.labelLarge?.copyWith(
                 color: Colors.white,
               ),
             ),
@@ -121,8 +123,8 @@ class DropdownTextField<T> extends StatelessWidget {
           enableColor: enableColor,
           borderRadius: radius,
           prefIcon: prefixIcon,
-          padding:
-              contentPadding ?? const EdgeInsets.symmetric(horizontal: 10, vertical: 12),
+          padding: contentPadding ??
+              const EdgeInsets.symmetric(horizontal: 10, vertical: 12),
           context: context,
         ),
       ),

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:structure_core/core/errors/base_error.dart';
+
+import '../../errors/base_error.dart';
 import 'base_state.dart';
 
 class BaseBloc<T> extends Cubit<BaseState<T>> {
-  BaseBloc([T? data]) : super(data != null ? BaseState.success(data) : const BaseState.init());
+  BaseBloc([T? data])
+      : super(data != null ? BaseState.success(data) : const BaseState.init());
 
   T? _data;
 
@@ -25,7 +27,10 @@ class BaseBloc<T> extends Cubit<BaseState<T>> {
     emit(BaseState.success(data));
   }
 
-  void failedState(BaseError error, VoidCallback callback) {
+  void failedState(
+    BaseError error,
+    VoidCallback callback,
+  ) {
     emit(BaseState.failure(error, callback));
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:ndf/core/theme/color/app_colors.dart';
 
 class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
   const BaseAppBar(
@@ -28,9 +29,9 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
       padding: const EdgeInsets.all(8.0),
       child: AppBar(
         title: title,
-        backgroundColor: backgroundColor ?? Theme.of(context).colorScheme.primary,
+        backgroundColor: backgroundColor ?? AppColors.of(context).primary,
         actions: actions ?? [],
-        iconTheme: IconThemeData(color: Colors.white),
+        iconTheme: IconThemeData(color: AppColors.of(context).white),
         automaticallyImplyLeading: implyLeading,
         elevation: elevation,
         leading: leading,
@@ -38,7 +39,7 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
         centerTitle: false,
         systemOverlayStyle: SystemUiOverlayStyle(
           statusBarIconBrightness: Brightness.dark,
-          statusBarColor: Theme.of(context).colorScheme.primary,
+          statusBarColor: AppColors.of(context).primary,
         ),
       ),
     );

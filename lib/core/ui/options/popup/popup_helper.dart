@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:ndf/core/common/extension/context.dart';
 
 abstract class AppPopupHelper {
   static PopupMenuItem<T> buildPopupMenuItem<T>({
@@ -22,13 +23,15 @@ abstract class AppPopupHelper {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   SvgPicture.asset(iconPath,
-                      color: Colors.black, width: size, height: size),
+                      color: context.colors.black, width: size, height: size),
                 ],
               )),
           const SizedBox(width: 8),
           Text(title,
               style: TextStyle(
-                  color: Colors.black, fontSize: 12.sp, fontWeight: FontWeight.w400)),
+                  color: context.colors.black,
+                  fontSize: 12.sp,
+                  fontWeight: FontWeight.w400)),
         ],
       ),
     );

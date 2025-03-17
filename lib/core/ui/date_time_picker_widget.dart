@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:structure_core/core/lib/custom_datetime_picker/flutter_cupertino_datetime_picker.dart';
-import 'package:structure_core/core/lib/custom_datetime_picker/src/date_picker_theme.dart';
+import 'package:ndf/core/common/resource.dart';
+import 'package:ndf/core/lib/custom_datetime_picker/flutter_cupertino_datetime_picker.dart';
+import 'package:ndf/core/lib/custom_datetime_picker/src/date_picker_theme.dart';
 
 import '../lib/custom_datetime_picker/src/date_picker_constants.dart';
 
@@ -52,11 +53,11 @@ class DateTimePicker extends StatelessWidget {
   }
 
   String getConfirmText(BuildContext context) {
-    return "Confirm";
+    return Translate.s.app_confirm;
   }
 
   String getCancelText(BuildContext context) {
-    return "Cancel";
+    return Translate.s.cancel;
   }
 
   @override
@@ -64,14 +65,14 @@ class DateTimePicker extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         if (openDateTimePicker == null) {
-          dateTimePickerWidget(
-              context, _format, _locale(context), getConfirmText(context), getCancelText(context));
+          dateTimePickerWidget(context, _format, _locale(context),
+              getConfirmText(context), getCancelText(context));
         } else {
           if (openDateTimePicker!() == false) {
             return;
           } else {
-            dateTimePickerWidget(context, _format, _locale(context), getConfirmText(context),
-                getCancelText(context));
+            dateTimePickerWidget(context, _format, _locale(context),
+                getConfirmText(context), getCancelText(context));
           }
         }
       },
@@ -79,14 +80,15 @@ class DateTimePicker extends StatelessWidget {
     );
   }
 
-  void dateTimePickerWidget(BuildContext context, String dateFormat, DateTimePickerLocale locale,
-      String confirmText, String cancelText) {
+  void dateTimePickerWidget(BuildContext context, String dateFormat,
+      DateTimePickerLocale locale, String confirmText, String cancelText) {
     DatePicker.showDatePicker(
       context,
       dateFormat: dateFormat,
       initialDateTime: initialDateTime ?? DateTime.now(),
       minDateTime: minDateTime ?? DateTime.now(),
-      maxDateTime: maxDateTime ?? DateTime.now().add(const Duration(days: 356 * 4)),
+      maxDateTime:
+          maxDateTime ?? DateTime.now().add(const Duration(days: 356 * 4)),
       pickerMode: DateTimePickerMode.time,
       onMonthChangeStartWithFirstDate: true,
       onChange: onChange,
@@ -95,8 +97,10 @@ class DateTimePicker extends StatelessWidget {
       locale: locale,
       pickerTheme: DateTimePickerTheme(
         showTitle: true,
-        confirm: Text(confirmText, style: Theme.of(context).textTheme.button!.copyWith(color: Colors.white)),
-        cancel: Text(cancelText, style: Theme.of(context).textTheme.button!.copyWith(color: Colors.white)),
+        confirm: Text(confirmText,
+            style: context.textTheme.bodyMedium!.copyWith(color: Colors.white)),
+        cancel: Text(cancelText,
+            style: context.textTheme.bodyMedium!.copyWith(color: Colors.white)),
         backgroundColor: Colors.white,
         itemHeight: 60.h,
         titleHeight: 60.h,

@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:ndf/core/common/extension/context.dart';
 
 import 'src/popupMenu.dart';
 import 'src/popup_safearea.dart';
@@ -16,14 +17,16 @@ typedef Future<List<T>> DropdownSearchOnFind<T>(String text);
 typedef String DropdownSearchItemAsString<T>(T item);
 typedef bool DropdownSearchFilterFn<T>(T item, String filter);
 typedef bool DropdownSearchCompareFn<T>(T item, T? selectedItem);
-typedef Widget DropdownSearchBuilder<T>(BuildContext context, T? selectedItem, String itemAsString);
+typedef Widget DropdownSearchBuilder<T>(
+    BuildContext context, T? selectedItem, String itemAsString);
 typedef Widget DropdownSearchPopupItemBuilder<T>(
   BuildContext context,
   T item,
   bool isSelected,
 );
 typedef bool DropdownSearchPopupItemEnabled<T>(T item);
-typedef Widget ErrorBuilder<T>(BuildContext context, String? searchEntry, dynamic exception);
+typedef Widget ErrorBuilder<T>(
+    BuildContext context, String? searchEntry, dynamic exception);
 typedef Widget EmptyBuilder<T>(BuildContext context, String? searchEntry);
 typedef Widget LoadingBuilder<T>(BuildContext context, String? searchEntry);
 typedef Widget IconButtonBuilder(BuildContext context);
@@ -336,7 +339,7 @@ class DropdownSearchState<T> extends State<DropdownSearch<T>> {
                 )
               : Text(
                   _selectedItemAsString(data),
-                  style: widget.style.copyWith(color: Theme.of(context).colorScheme.primary),
+                  style: widget.style.copyWith(color: context.colors.primary),
                 ),
         ),
         if (!widget.showAsSuffixIcons) _manageTrailingIcons(data),
@@ -368,7 +371,8 @@ class DropdownSearchState<T> extends State<DropdownSearch<T>> {
                     textAlign: widget.dropdownSearchTextAlign,
                     textAlignVertical: widget.dropdownSearchTextAlignVertical,
                     isEmpty: value == null &&
-                        (widget.dropdownBuilder == null || widget.dropdownBuilderSupportsNullItem),
+                        (widget.dropdownBuilder == null ||
+                            widget.dropdownBuilderSupportsNullItem),
                     isFocused: isFocused,
                     decoration: widget.dropdownSearchDecoration!,
                     child: _defaultSelectItemWidget(value),
@@ -379,7 +383,8 @@ class DropdownSearchState<T> extends State<DropdownSearch<T>> {
                 padding: EdgeInsets.symmetric(vertical: 5),
                 child: Text(
                   state.errorText ?? "",
-                  style: Theme.of(context).textTheme.labelMedium?.copyWith(color: Colors.red),
+                  style: context.textTheme.labelMedium
+                      ?.copyWith(color: Colors.red),
                 ),
               ),
           ],
@@ -448,7 +453,8 @@ class DropdownSearchState<T> extends State<DropdownSearch<T>> {
                   child: widget.clearButtonBuilder!(context),
                 )
               : InkWell(
-                  child: widget.clearButton ?? const Icon(Icons.clear, size: 24),
+                  child:
+                      widget.clearButton ?? const Icon(Icons.clear, size: 24),
                   onTap: clearButtonPressed,
                 ),
         widget.dropdownButtonBuilder != null
@@ -457,7 +463,8 @@ class DropdownSearchState<T> extends State<DropdownSearch<T>> {
                 child: widget.dropdownButtonBuilder!(context),
               )
             : InkWell(
-                child: widget.dropDownButton ?? const Icon(Icons.arrow_drop_down, size: 24),
+                child: widget.dropDownButton ??
+                    const Icon(Icons.arrow_drop_down, size: 24),
                 onTap: dropdownButtonPressed,
               ),
       ],
@@ -517,13 +524,16 @@ class DropdownSearchState<T> extends State<DropdownSearch<T>> {
     // Here we get the render object of our physical button, later to get its size & position
     final RenderBox popupButtonObject = context.findRenderObject() as RenderBox;
     // Get the render object of the overlay used in `Navigator` / `MaterialApp`, i.e. screen size reference
-    final RenderBox overlay = Overlay.of(context)!.context.findRenderObject() as RenderBox;
+    final RenderBox overlay =
+        Overlay.of(context)!.context.findRenderObject() as RenderBox;
     // Calculate the show-up area for the dropdown using button's size & position based on the `overlay` used as the coordinate space.
     final RelativeRect position = RelativeRect.fromSize(
       Rect.fromPoints(
-        popupButtonObject.localToGlobal(popupButtonObject.size.bottomLeft(Offset.zero),
+        popupButtonObject.localToGlobal(
+            popupButtonObject.size.bottomLeft(Offset.zero),
             ancestor: overlay),
-        popupButtonObject.localToGlobal(popupButtonObject.size.bottomRight(Offset.zero),
+        popupButtonObject.localToGlobal(
+            popupButtonObject.size.bottomRight(Offset.zero),
             ancestor: overlay),
       ),
       Size(overlay.size.width, overlay.size.height),
@@ -571,7 +581,8 @@ class DropdownSearchState<T> extends State<DropdownSearch<T>> {
       autoFocusSearchBox: widget.autoFocusSearchBox,
       dialogMaxWidth: widget.dialogMaxWidth,
       itemDisabled: widget.popupItemDisabled,
-      searchBoxController: widget.searchBoxController ?? TextEditingController(),
+      searchBoxController:
+          widget.searchBoxController ?? TextEditingController(),
       searchDelay: widget.searchDelay,
       showFavoriteItems: widget.showFavoriteItems,
       favoriteItems: widget.favoriteItems,
@@ -600,7 +611,8 @@ class DropdownSearchState<T> extends State<DropdownSearch<T>> {
     };
 
     if (widget.onBeforeChange != null) {
-      widget.onBeforeChange!(_selectedItemNotifier.value, selectedItem).then((value) {
+      widget.onBeforeChange!(_selectedItemNotifier.value, selectedItem)
+          .then((value) {
         if (value == true) {
           changeItem();
         }
@@ -638,11 +650,13 @@ class DropdownSearchState<T> extends State<DropdownSearch<T>> {
   ///another widgets we should clear the focus
   ///THIS USED FOR OPEN DROPDOWN_SEARCH PROGRAMMATICALLY,
   ///otherwise you can you [_selectSearchMode]
-  Future<T?> openDropDownSearch() => _selectSearchMode(_selectedItemNotifier.value);
+  Future<T?> openDropDownSearch() =>
+      _selectSearchMode(_selectedItemNotifier.value);
 
   ///Change selected Value; this function is public USED to change the selected
   ///value PROGRAMMATICALLY, Otherwise you can use [_handleOnChangeSelectedItem]
-  void changeSelectedItem(T? selectedItem) => _handleOnChangeSelectedItem(selectedItem);
+  void changeSelectedItem(T? selectedItem) =>
+      _handleOnChangeSelectedItem(selectedItem);
 
   ///Change selected Value; this function is public USED to clear selected
   ///value PROGRAMMATICALLY, Otherwise you can use [_handleOnChangeSelectedItem]

@@ -1,13 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:structure_core/core/ui/svg_assets.dart';
+import 'package:ndf/core/common/resource.dart';
+import 'package:ndf/core/theme/color/app_colors.dart';
+import 'package:ndf/core/ui/svg_assets.dart';
+import 'package:ndf/res.dart';
 
 class CustomMoreScreenAppBar extends StatelessWidget {
-  const CustomMoreScreenAppBar(this.title, {Key? key, this.withBack,required this.appLogo})
+  const CustomMoreScreenAppBar(this.title, {Key? key, this.withBack})
       : super(key: key);
   final bool? withBack;
   final String title;
-  final String appLogo;
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -19,8 +21,8 @@ class CustomMoreScreenAppBar extends StatelessWidget {
       ),
       child: Container(
         clipBehavior: Clip.antiAliasWithSaveLayer,
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height / 6,
+        width: context.width,
+        height: context.height / 6,
         decoration: BoxDecoration(
             color: Theme.of(context).colorScheme.primary,
             borderRadius: const BorderRadius.only(
@@ -41,14 +43,14 @@ class CustomMoreScreenAppBar extends StatelessWidget {
                           child: Row(mainAxisSize: MainAxisSize.min, children: [
                             Icon(
                               Icons.arrow_back_ios,
-                              color: Colors.white,
+                              color: AppColors.of(context).white,
                               size: 20.0,
                             ),
                             Text(
-                              "More",
+                              Translate.s.more,
                               style: Theme.of(context)
                                   .textTheme
-                                  .subtitle1
+                                  .bodyMedium
                                   ?.copyWith(
                                     color:
                                         Theme.of(context).colorScheme.onPrimary,
@@ -61,7 +63,7 @@ class CustomMoreScreenAppBar extends StatelessWidget {
                           width: 10,
                         ),
                   SvgAssets.getWidget(
-                    appLogo,
+                    Res.full_logo,
                     height: 50,
                     width: 50,
                   ),
@@ -71,8 +73,8 @@ class CustomMoreScreenAppBar extends StatelessWidget {
                 children: [
                   Text(
                     title,
-                    style: Theme.of(context).textTheme.headline2?.copyWith(
-                          color: Colors.white,
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          color: AppColors.of(context).white,
                           fontWeight: FontWeight.bold,
                         ),
                   ),

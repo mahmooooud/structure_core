@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ndf/core/common/extension/context.dart';
 
 class SelectedOptionText extends StatelessWidget {
   final String text;
@@ -10,6 +11,8 @@ class SelectedOptionText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(text,
         style: TextStyle(
-            color: Theme.of(context).colorScheme.secondary, fontSize: 12.sp, fontWeight: FontWeight.w400));
+            color: context.colors.secondary,
+            fontSize: 12.sp,
+            fontWeight: FontWeight.w400));
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:structure_core/core/ui/transform/horizontal_mirror_widget.dart';
+import 'package:ndf/core/ui/transform/horizontal_mirror_widget.dart';
+import 'package:ndf/res.dart';
 
 class EditIcon extends StatelessWidget {
   final double size;

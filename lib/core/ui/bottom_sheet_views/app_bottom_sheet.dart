@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:structure_core/core/common/gaps.dart';
-import 'package:structure_core/core/ui/options/button/option_button.dart';
-import 'package:structure_core/core/ui/options/controller/option_controller.dart';
-import 'package:structure_core/core/ui/app_button.dart';
+import 'package:ndf/core/common/extension/context.dart';
+import 'package:ndf/core/common/gaps.dart';
+import 'package:ndf/core/localization/translate.dart';
+import 'package:ndf/core/theme/color/app_colors.dart';
+import 'package:ndf/core/ui/app_button.dart';
+import 'package:ndf/core/ui/options/button/option_button.dart';
+import 'package:ndf/core/ui/options/controller/option_controller.dart';
 
 class AppSheetButton<T> extends StatelessWidget {
   final String hintText;
@@ -47,9 +50,10 @@ class AppSheetButton<T> extends StatelessWidget {
                 borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
                 borderSide: BorderSide.none),
             builder: (context) => SizedBox(
-                  height: (MediaQuery.of(context).size.height - 53) * .7,
+                  height: context.bodyHeightWithoutAppBar * .7,
                   child: ClipRRect(
-                      borderRadius: const BorderRadius.vertical(top: Radius.circular(30)),
+                      borderRadius:
+                          const BorderRadius.vertical(top: Radius.circular(30)),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -58,35 +62,36 @@ class AppSheetButton<T> extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 24),
                             child: Text(
-                                bottomSheetTitle,
-                              style: Theme.of(context).textTheme.headline6!.copyWith(
-                                color: Theme.of(context).colorScheme.secondary
-                              ),
+                              bottomSheetTitle,
+                              style: context.textTheme.bodyMedium!.copyWith(
+                                  color: AppColors.of(context).secondary),
                             ),
                           ),
                           Gaps.vGap8,
                           Container(
-                            height: (MediaQuery.of(context).size.height - 53) * .4,
-                            margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+                            height: context.bodyHeightWithoutAppBar * .4,
+                            margin: const EdgeInsets.symmetric(
+                                vertical: 8, horizontal: 12),
                             child: Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: 12, horizontal: 12),
                               child: AnimatedBuilder(
                                   animation: controller,
                                   builder: (context, __) {
-                                  return content(context);
-                                }
-                              ),
+                                    return content(context);
+                                  }),
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 4, horizontal: 12),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 AppTextButton(
                                   width: 80.w,
                                   isTransparentBackground: true,
-                                  text: "Cancel",
+                                  text: Translate.s.cancel,
                                   onPressed: () {
                                     Navigator.pop(context);
                                   },
@@ -94,7 +99,7 @@ class AppSheetButton<T> extends StatelessWidget {
                                 Gaps.hGap8,
                                 AppTextButton(
                                   width: 80.w,
-                                  text: customSaveText ?? "Save",
+                                  text: customSaveText ?? Translate.s.save,
                                   onPressed: onSaveTextPressed,
                                 ),
                               ],

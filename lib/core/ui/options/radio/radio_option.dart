@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:ndf/core/common/extension/context.dart';
+import 'package:ndf/res.dart';
 
 class RadioOption<T> extends StatelessWidget {
   final T value;
@@ -33,12 +35,12 @@ class RadioOption<T> extends StatelessWidget {
                     ? TextStyle(
                         fontWeight: FontWeight.w500,
                         fontSize: 14.sp,
-                        color: Theme.of(context).colorScheme.onBackground,
+                        color: context.colors.titleBlack,
                       )
                     : TextStyle(
                         fontWeight: FontWeight.w400,
                         fontSize: 14.sp,
-                        color: Colors.grey,
+                        color: context.colors.grey,
                       ),
               ),
             ),

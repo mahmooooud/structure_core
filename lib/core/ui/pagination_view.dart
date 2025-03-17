@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
-import 'package:structure_core/core/ui/status_pages/empty_records_view.dart';
-import 'package:structure_core/core/ui/status_pages/loading_view.dart';
-import 'package:structure_core/core/ui/status_pages/page_error_view.dart';
+import 'package:ndf/core/localization/translate.dart';
+import 'package:ndf/core/ui/status_pages/empty_records_view.dart';
+import 'package:ndf/core/ui/status_pages/loading_view.dart';
+import 'package:ndf/core/ui/status_pages/page_error_view.dart';
 
 class PaginationView<ItemType> extends StatelessWidget {
   final PagingController<int, ItemType> controller;
@@ -11,24 +12,20 @@ class PaginationView<ItemType> extends StatelessWidget {
   final Function()? onEmptyFunc;
   final Widget? loadingView;
   final EdgeInsetsGeometry? padding;
-  final String errorActionText;
-  final String emptyRecords;
 
-  const PaginationView({
-    Key? key,
-    required this.controller,
-    required this.itemBuilder,
-    required this.errorActionText,
-    required this.emptyRecords,
-    this.padding,
-    this.onEmptyFunc,
-    this.loadingView
-  }) : super(key: key);
+  const PaginationView(
+      {Key? key,
+      required this.controller,
+      required this.itemBuilder,
+      this.padding,
+      this.onEmptyFunc,
+      this.loadingView})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return PagedListView<int, ItemType>(
-      padding: padding??EdgeInsets.only(bottom: 20.h),
+      padding: padding ?? EdgeInsets.only(bottom: 20.h),
       pagingController: controller,
       builderDelegate: PagedChildBuilderDelegate<ItemType>(
         firstPageErrorIndicatorBuilder: (context) {
@@ -36,7 +33,6 @@ class PaginationView<ItemType> extends StatelessWidget {
             action: () => controller.refresh(),
             actionName: 'TryAgain',
             errorMessage: '',
-            actionText: errorActionText,
           );
         },
         newPageErrorIndicatorBuilder: (context) {
@@ -44,18 +40,15 @@ class PaginationView<ItemType> extends StatelessWidget {
             action: () => controller.refresh(),
             actionName: 'TryAgain',
             errorMessage: '',
-            actionText: errorActionText
           );
         },
         noItemsFoundIndicatorBuilder: (context) {
           return EmptyRecordsView(
-            onTap: onEmptyFunc??(){},
-            actionText: errorActionText,
-            emptyRecords: emptyRecords,
+            onTap: onEmptyFunc ?? () {},
           );
         },
         firstPageProgressIndicatorBuilder: (context) {
-          return loadingView??const LoadingView();
+          return loadingView ?? const LoadingView();
         },
         newPageProgressIndicatorBuilder: (context) {
           return const Center(

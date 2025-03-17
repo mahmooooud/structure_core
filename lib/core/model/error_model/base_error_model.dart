@@ -9,23 +9,26 @@ class BaseErrorModel {
   BaseErrorModel({this.exCode, this.message, this.type});
 
   BaseErrorModel.fromJson(Map<String, dynamic> jsn) {
+    print("jsnjsnjsn ${jsn}");
     exCode = jsn['exCode'];
+
     if (jsn['message'] != null) {
       message = <Message>[];
-      json.decode(jsn['message']).forEach((v) {
-        message!.add(new Message.fromJson(v));
+      jsn['message'].forEach((v) {
+        print("jsnjsnjsn ${v}");
+        message!.add(Message.fromJson(v));
       });
     }
     type = jsn['type'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['exCode'] = this.exCode;
-    if (this.message != null) {
-      data['message'] = this.message!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['exCode'] = exCode;
+    if (message != null) {
+      data['message'] = message!.map((v) => v.toJson()).toList();
     }
-    data['type'] = this.type;
+    data['type'] = type;
     return data;
   }
 }
@@ -35,13 +38,14 @@ class Message {
 
   Message({this.errorMessage});
 
-  Message.fromJson(Map<String, dynamic> json) {
-    errorMessage = json['ErrorMessage'];
+  Message.fromJson(json) {
+    print("jsonjson ${json['errorMessage']}");
+    errorMessage = json['errorMessage'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['ErrorMessage'] = this.errorMessage;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['ErrorMessage'] = errorMessage;
     return data;
   }
 }

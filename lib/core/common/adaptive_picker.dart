@@ -1,8 +1,12 @@
 import 'dart:io';
 
+import 'package:ndf/core/common/extension/context.dart';
+import 'package:ndf/core/localization/translate.dart';
 import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_rounded_date_picker/flutter_rounded_date_picker.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AdaptivePicker {
   static datePicker(
@@ -43,10 +47,11 @@ class AdaptivePicker {
         borderRadius: 16,
         height: 300,
         theme: ThemeData.light().copyWith(
-          primaryColor: Theme.of(context).colorScheme.primary,
-          backgroundColor: Colors.white,
-          buttonTheme:
-              const ButtonThemeData(textTheme: ButtonTextTheme.primary),
+          colorScheme: ColorScheme.light(
+            primary: context.colors.primary, // header background color
+            onPrimary: Colors.black, // header text color
+          ),
+          primaryColor: context.colors.white,
         )).then(onConfirm);
   }
 
@@ -74,7 +79,8 @@ class AdaptivePicker {
       bool? isDateTime = false}) {
     DateTime _date = DateTime.now();
     return SizedBox(
-      height: 260,
+      height: 260.h,
+      width: context.width,
       child: Column(
         children: [
           Padding(
@@ -84,37 +90,44 @@ class AdaptivePicker {
               children: [
                 Text(
                   title,
-                  style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                  style: context.textTheme.labelLarge?.copyWith(
                       fontWeight: FontWeight.w500, color: Colors.black45),
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    onConfirm(_date);
+                    print("Navigator.pop");
                     Navigator.of(context).pop();
+                    onConfirm(_date);
                   },
                   style: ElevatedButton.styleFrom(
-                      elevation: 0, primary: Colors.white),
+                      elevation: 0,
+                      backgroundColor: Colors.grey.withOpacity(.3)),
                   child: Text(
-                    "Done",
-                    style: Theme.of(context).textTheme.titleLarge
-                        ?.copyWith(color: Theme.of(context).colorScheme.primary),
+                    Translate.s.done,
+                    style: context.textTheme.titleLarge
+                        ?.copyWith(color: context.theme.primaryColor),
                   ),
                 ),
               ],
             ),
           ),
           Flexible(
-            child: CupertinoDatePicker(
-              initialDateTime: initial ?? DateTime.now(),
-              onDateTimeChanged: (date) {
-                _date = date;
-              },
-              maximumDate: maxDate ?? DateTime(2050),
-              minimumDate:
-                  minDate ?? DateTime.now().add(const Duration(days: -1)),
-              mode: isDateTime!
-                  ? CupertinoDatePickerMode.dateAndTime
-                  : CupertinoDatePickerMode.date,
+            child: CupertinoTheme(
+              data: const CupertinoThemeData(
+                brightness: Brightness.light,
+              ),
+              child: CupertinoDatePicker(
+                initialDateTime: initial ?? DateTime.now(),
+                onDateTimeChanged: (date) {
+                  _date = date;
+                },
+                maximumYear: DateTime.now().year,
+                minimumYear: 1930,
+                maximumDate: maxDate ?? DateTime.now(),
+                minimumDate:
+                    minDate ?? DateTime.now().add(const Duration(days: -1)),
+                mode: CupertinoDatePickerMode.date,
+              ),
             ),
           ),
         ],
@@ -127,7 +140,7 @@ class AdaptivePicker {
       required String title,
       required Function(DateTime? date) onConfirm,
       DateTime? initialTime}) async {
-      _androidTimePicker(context, onConfirm, initialTime: initialTime);
+    _androidTimePicker(context, onConfirm, initialTime: initialTime);
   }
 
   static _androidTimePicker(
@@ -137,12 +150,12 @@ class AdaptivePicker {
     showRoundedTimePicker(
       context: context,
       theme: ThemeData(
-          primaryColor: Theme.of(context).colorScheme.primary,
-          backgroundColor: Colors.white,
+          primaryColor: context.colors.white,
+          canvasColor: Colors.white,
           textButtonTheme: TextButtonThemeData(
               style: ButtonStyle(
                   textStyle: MaterialStatePropertyAll<TextStyle>(
-                      TextStyle(color: Theme.of(context).colorScheme.primary)))),
+                      TextStyle(color: context.colors.primary)))),
           buttonTheme:
               const ButtonThemeData(textTheme: ButtonTextTheme.primary)),
       initialTime: initialTime != null
@@ -171,7 +184,7 @@ class AdaptivePicker {
               children: [
                 Text(
                   title,
-                  style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                  style: context.textTheme.labelLarge?.copyWith(
                       fontWeight: FontWeight.w500, color: Colors.black45),
                 ),
                 SizedBox(
@@ -181,11 +194,12 @@ class AdaptivePicker {
                       onConfirm(_date);
                       Navigator.of(context).pop();
                     },
-                    style: ElevatedButton.styleFrom(elevation: 0, primary: Colors.white),
+                    style: ElevatedButton.styleFrom(
+                        elevation: 0, backgroundColor: Colors.white),
                     child: Text(
-                      "Done",
-                      style: Theme.of(context).textTheme.titleLarge
-                          ?.copyWith(color: Theme.of(context).colorScheme.primary),
+                      Translate.s.done,
+                      style: context.textTheme.titleLarge
+                          ?.copyWith(color: context.theme.primaryColor),
                     ),
                   ),
                 )
@@ -193,7 +207,7 @@ class AdaptivePicker {
             ),
           ),
           Flexible(
-            child: YearPicker(
+              child: YearPicker(
             firstDate: DateTime(DateTime.now().year - 100, 1),
             lastDate: DateTime(DateTime.now().year + 100, 1),
             initialDate: initialTime ?? DateTime.now(),
@@ -219,6 +233,7 @@ class AdaptivePicker {
   static _bottomSheet({required BuildContext context, required Widget child}) {
     return showModalBottomSheet(
       isScrollControlled: false,
+      backgroundColor: Colors.white,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(13),
@@ -267,7 +282,7 @@ class AdaptivePicker {
               children: [
                 Text(
                   title,
-                  style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                  style: context.textTheme.labelLarge?.copyWith(
                       fontWeight: FontWeight.w500, color: Colors.black45),
                 ),
                 SizedBox(
@@ -277,13 +292,13 @@ class AdaptivePicker {
                       onConfirm(_date);
                       Navigator.of(context).pop();
                     },
-                    child: Text(
-                      "Done",
-                      style: Theme.of(context).textTheme.titleLarge
-                          ?.copyWith(color: Theme.of(context).colorScheme.primary),
-                    ),
                     style: ElevatedButton.styleFrom(
-                        elevation: 0, primary: Colors.white),
+                        elevation: 0, backgroundColor: Colors.white),
+                    child: Text(
+                      Translate.s.done,
+                      style: context.textTheme.titleLarge
+                          ?.copyWith(color: context.theme.primaryColor),
+                    ),
                   ),
                 )
               ],

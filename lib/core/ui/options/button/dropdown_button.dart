@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:structure_core/core/common/dimens.dart';
-import 'package:structure_core/core/ui/options/button/option_button_decoration.dart';
-import 'package:structure_core/core/ui/options/controller/option_controller.dart';
+import 'package:ndf/core/common/resource.dart';
+import 'package:ndf/core/ui/options/button/option_button_decoration.dart';
+import 'package:ndf/core/ui/options/controller/option_controller.dart';
 
 class AppDropDownButton<T> extends StatefulWidget {
   final List<T>? items;
@@ -45,12 +45,15 @@ class _AppDropDownButtonState<T> extends State<AppDropDownButton<T>> {
         underline: const SizedBox(),
         hint: Text(
           widget.hintText,
-          style:
-              Theme.of(context).textTheme.bodyText2!.copyWith(color: Theme.of(context).colorScheme.onPrimary),
+          style: Theme.of(context)
+              .textTheme
+              .bodyMedium!
+              .copyWith(color: context.colors.titleGrey),
         ),
-        icon: Icon(Icons.keyboard_arrow_down_rounded, size: 20, color: Theme.of(context).colorScheme.secondary),
+        icon: Icon(Icons.keyboard_arrow_down_rounded,
+            size: 20, color: context.colors.secondary),
         elevation: 1,
-        dropdownColor: Colors.white,
+        dropdownColor: context.colors.white,
         selectedItemBuilder: widget.selectedItemBuilder,
       ),
     );

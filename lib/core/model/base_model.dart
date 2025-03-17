@@ -1,36 +1,36 @@
-class BaseResponseModel{
+class BaseResponseModel {
   int? total;
   int? pageNumber;
   int? pageSize;
   dynamic? data;
-  List<String>? messages;
+  List<String>? errorMessage;
   bool? isSuccess;
 
   BaseResponseModel(
       {this.total,
-        this.pageNumber,
-        this.pageSize,
-        this.data,
-        this.messages,
-        this.isSuccess});
+      this.pageNumber,
+      this.pageSize,
+      this.data,
+      this.errorMessage,
+      this.isSuccess});
 
   BaseResponseModel.fromJson(Map<String, dynamic> json) {
     total = json['Total'];
     pageNumber = json['PageNumber'];
     pageSize = json['PageSize'];
     data = json['Data'];
-    messages = json['Messages'].cast<String>();
+    errorMessage = json['errorMessage'];
     isSuccess = json['IsSuccess'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['Total'] = this.total;
-    data['PageNumber'] = this.pageNumber;
-    data['PageSize'] = this.pageSize;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['Total'] = total;
+    data['PageNumber'] = pageNumber;
+    data['PageSize'] = pageSize;
     data['Data'] = this.data;
-    data['Messages'] = this.messages;
-    data['IsSuccess'] = this.isSuccess;
+    data['errorMessage'] = errorMessage;
+    data['IsSuccess'] = isSuccess;
     return data;
   }
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:structure_core/core/common/custom_toast.dart';
+import 'package:ndf/core/common/custom_toast.dart';
 
 class DoubleTapBackExitApp extends StatefulWidget {
   const DoubleTapBackExitApp({

@@ -1,4 +1,4 @@
-import 'package:structure_core/core/common/extension/logger_extension.dart';
+import 'package:ndf/core/common/extension/logger_extension.dart';
 
 extension TextUtilsStringExtension on String? {
   /// Returns true if string is:

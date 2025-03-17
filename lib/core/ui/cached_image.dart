@@ -1,6 +1,8 @@
+import 'package:ndf/core/common/extension/context.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:ndf/core/theme/color/app_colors.dart';
 
 class CachedImage extends StatelessWidget {
   final String url;
@@ -17,7 +19,8 @@ class CachedImage extends StatelessWidget {
   final bool haveRadius;
 
   const CachedImage(
-      {Key? key, required this.url,
+      {Key? key,
+      required this.url,
       this.fit,
       this.width,
       this.height,
@@ -30,7 +33,8 @@ class CachedImage extends StatelessWidget {
       this.borderColor,
       this.borderWidth,
       this.bgColor,
-      this.haveRadius = true}) : super(key: key);
+      this.haveRadius = true})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -40,9 +44,11 @@ class CachedImage extends StatelessWidget {
         height: height,
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: bgColor ?? Theme.of(context).colorScheme.primary.withOpacity(.5),
-          borderRadius: haveRadius ? borderRadius ?? BorderRadius.circular(0) : null,
-          border: Border.all(color: borderColor ?? Colors.transparent, width: 1),
+          color: bgColor ?? AppColors.of(context).primary.withOpacity(.5),
+          borderRadius:
+              haveRadius ? borderRadius ?? BorderRadius.circular(0) : null,
+          border:
+              Border.all(color: borderColor ?? Colors.transparent, width: 1),
           shape: boxShape ?? BoxShape.rectangle,
         ),
         child: Stack(
@@ -62,10 +68,15 @@ class CachedImage extends StatelessWidget {
         height: height,
         decoration: BoxDecoration(
           image: DecorationImage(
-              image: imageProvider, fit: fit ?? BoxFit.fill, colorFilter: colorFilter),
-          borderRadius: haveRadius ? borderRadius ?? BorderRadius.circular(0) : null,
+              image: imageProvider,
+              fit: fit ?? BoxFit.fill,
+              colorFilter: colorFilter),
+          borderRadius:
+              haveRadius ? borderRadius ?? BorderRadius.circular(0) : null,
           shape: boxShape ?? BoxShape.rectangle,
-          border: Border.all(color: borderColor ?? Colors.transparent, width: borderWidth ?? 1),
+          border: Border.all(
+              color: borderColor ?? Colors.transparent,
+              width: borderWidth ?? 1),
         ),
         alignment: alignment ?? Alignment.center,
         child: child,
@@ -75,13 +86,15 @@ class CachedImage extends StatelessWidget {
         height: height,
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          borderRadius: haveRadius ? borderRadius ?? BorderRadius.circular(0) : null,
-          border: Border.all(color: borderColor ?? Colors.transparent, width: 1),
+          borderRadius:
+              haveRadius ? borderRadius ?? BorderRadius.circular(0) : null,
+          border:
+              Border.all(color: borderColor ?? Colors.transparent, width: 1),
           shape: boxShape ?? BoxShape.rectangle,
-          color: bgColor ?? Theme.of(context).colorScheme.primary.withOpacity(.5),
+          color: bgColor ?? AppColors.of(context).primary.withOpacity(.5),
         ),
         child: SpinKitFadingCircle(
-          color: Theme.of(context).colorScheme.primary,
+          color: AppColors.of(context).primary,
           size: 30.0,
         ),
       ),
@@ -90,9 +103,11 @@ class CachedImage extends StatelessWidget {
         height: height,
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: bgColor ?? Theme.of(context).colorScheme.primary.withOpacity(.5),
-          borderRadius: haveRadius ? borderRadius ?? BorderRadius.circular(0) : null,
-          border: Border.all(color: borderColor ?? Colors.transparent, width: 1),
+          color: bgColor ?? AppColors.of(context).primary.withOpacity(.5),
+          borderRadius:
+              haveRadius ? borderRadius ?? BorderRadius.circular(0) : null,
+          border:
+              Border.all(color: borderColor ?? Colors.transparent, width: 1),
           shape: boxShape ?? BoxShape.rectangle,
         ),
         child: Stack(
@@ -102,6 +117,33 @@ class CachedImage extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class PlaceHolderWidget extends StatelessWidget {
+  final String? placeHolder;
+  final double? width;
+  final double? height;
+  final Color? color;
+  final Widget? child;
+  const PlaceHolderWidget(
+      {Key? key,
+      this.placeHolder,
+      this.width,
+      this.height,
+      this.color,
+      this.child})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: height,
+      width: width,
+      decoration: BoxDecoration(
+          color: color ?? context.colors.grey, shape: BoxShape.circle),
+      child: child,
     );
   }
 }

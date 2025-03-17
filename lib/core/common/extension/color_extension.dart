@@ -10,4 +10,12 @@ extension ColorExtension on String {
       return Color(int.parse("0x$hexColor"));
     }
   }
+
+  firstLetters() {
+    if(isEmpty){
+      return "";
+    }else{
+      return "${split(" ").first[0]}${split(" ").last[0]}";
+    }
+  }
 }

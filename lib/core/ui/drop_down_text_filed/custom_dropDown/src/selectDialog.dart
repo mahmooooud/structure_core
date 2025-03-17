@@ -110,7 +110,8 @@ class SelectDialog<T> extends StatefulWidget {
 
 class _SelectDialogState<T> extends State<SelectDialog<T>> {
   final FocusNode focusNode = new FocusNode();
-  final StreamController<List<T>> _itemsStream = StreamController<List<T>>.broadcast();
+  final StreamController<List<T>> _itemsStream =
+      StreamController<List<T>>.broadcast();
   final ValueNotifier<bool> _loadingNotifier = ValueNotifier(false);
   final List<T> _items = <T>[];
   late Debouncer _debouncer;
@@ -123,7 +124,9 @@ class _SelectDialogState<T> extends State<SelectDialog<T>> {
     Future.delayed(
       Duration.zero,
       () => manageItemsByFilter(
-          widget.searchFieldProps?.controller?.text ?? widget.searchBoxController?.text ?? '',
+          widget.searchFieldProps?.controller?.text ??
+              widget.searchBoxController?.text ??
+              '',
           isFistLoad: true),
     );
   }
@@ -186,7 +189,8 @@ class _SelectDialogState<T> extends State<SelectDialog<T>> {
                       // hoverThickness: widget.scrollbarProps?.hoverThickness,
                       thickness: widget.scrollbarProps?.thickness,
                       radius: widget.scrollbarProps?.radius,
-                      notificationPredicate: widget.scrollbarProps?.notificationPredicate,
+                      notificationPredicate:
+                          widget.scrollbarProps?.notificationPredicate,
                       interactive: widget.scrollbarProps?.interactive,
                       child: ListView.builder(
                         shrinkWrap: true,
@@ -234,7 +238,8 @@ class _SelectDialogState<T> extends State<SelectDialog<T>> {
     if (widget.errorBuilder != null)
       return widget.errorBuilder!(
         context,
-        widget.searchFieldProps?.controller?.text ?? widget.searchBoxController?.text,
+        widget.searchFieldProps?.controller?.text ??
+            widget.searchBoxController?.text,
         error,
       );
     else
@@ -254,7 +259,8 @@ class _SelectDialogState<T> extends State<SelectDialog<T>> {
             if (widget.loadingBuilder != null)
               return widget.loadingBuilder!(
                 context,
-                widget.searchFieldProps?.controller?.text ?? widget.searchBoxController?.text,
+                widget.searchFieldProps?.controller?.text ??
+                    widget.searchBoxController?.text,
               );
             else
               return Padding(
@@ -285,7 +291,9 @@ class _SelectDialogState<T> extends State<SelectDialog<T>> {
         else if (i.toString().toLowerCase().contains(filter.toLowerCase()))
           return true;
         else if (widget.itemAsString != null) {
-          return (widget.itemAsString!(i)).toLowerCase().contains(filter.toLowerCase());
+          return (widget.itemAsString!(i))
+              .toLowerCase()
+              .contains(filter.toLowerCase());
         }
         return false;
       }).toList();
@@ -358,9 +366,10 @@ class _SelectDialogState<T> extends State<SelectDialog<T>> {
             _manageSelectedItemVisibility(item),
           ),
         ),
-        onTap: widget.itemDisabled != null && (widget.itemDisabled!(item)) == true
-            ? null
-            : () => _handleSelectItem(item),
+        onTap:
+            widget.itemDisabled != null && (widget.itemDisabled!(item)) == true
+                ? null
+                : () => _handleSelectItem(item),
       );
     else
       return ListTile(
@@ -369,9 +378,10 @@ class _SelectDialogState<T> extends State<SelectDialog<T>> {
           style: TextStyle(fontSize: 16),
         ),
         selected: _manageSelectedItemVisibility(item),
-        onTap: widget.itemDisabled != null && (widget.itemDisabled!(item)) == true
-            ? null
-            : () => _handleSelectItem(item),
+        onTap:
+            widget.itemDisabled != null && (widget.itemDisabled!(item)) == true
+                ? null
+                : () => _handleSelectItem(item),
       );
   }
 
@@ -398,7 +408,8 @@ class _SelectDialogState<T> extends State<SelectDialog<T>> {
               padding: const EdgeInsets.all(8.0),
               child: TextField(
                 style: widget.searchFieldProps?.style ?? widget.searchBoxStyle,
-                controller: widget.searchFieldProps?.controller ?? widget.searchBoxController,
+                controller: widget.searchFieldProps?.controller ??
+                    widget.searchBoxController,
                 focusNode: focusNode,
                 onChanged: (f) => _debouncer(() {
                   _onTextChanged(f);
@@ -408,31 +419,38 @@ class _SelectDialogState<T> extends State<SelectDialog<T>> {
                     InputDecoration(
                       hintText: widget.hintText,
                       border: const OutlineInputBorder(),
-                      contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+                      contentPadding:
+                          const EdgeInsets.symmetric(horizontal: 16),
                     ),
                 keyboardType: widget.searchFieldProps?.keyboardType,
                 textInputAction: widget.searchFieldProps?.textInputAction,
                 textCapitalization:
-                    widget.searchFieldProps?.textCapitalization ?? TextCapitalization.none,
+                    widget.searchFieldProps?.textCapitalization ??
+                        TextCapitalization.none,
                 strutStyle: widget.searchFieldProps?.strutStyle,
-                textAlign: widget.searchFieldProps?.textAlign ?? TextAlign.start,
+                textAlign:
+                    widget.searchFieldProps?.textAlign ?? TextAlign.start,
                 textAlignVertical: widget.searchFieldProps?.textAlignVertical,
                 textDirection: widget.searchFieldProps?.textDirection,
                 readOnly: widget.searchFieldProps?.readOnly ?? false,
                 toolbarOptions: widget.searchFieldProps?.toolbarOptions,
                 showCursor: widget.searchFieldProps?.showCursor,
-                obscuringCharacter: widget.searchFieldProps?.obscuringCharacter ?? '•',
+                obscuringCharacter:
+                    widget.searchFieldProps?.obscuringCharacter ?? '•',
                 obscureText: widget.searchFieldProps?.obscureText ?? false,
                 autocorrect: widget.searchFieldProps?.autocorrect ?? true,
                 smartDashesType: widget.searchFieldProps?.smartDashesType,
                 smartQuotesType: widget.searchFieldProps?.smartQuotesType,
-                enableSuggestions: widget.searchFieldProps?.enableSuggestions ?? true,
+                enableSuggestions:
+                    widget.searchFieldProps?.enableSuggestions ?? true,
                 maxLines: widget.searchFieldProps?.maxLines ?? 1,
                 minLines: widget.searchFieldProps?.minLines,
                 expands: widget.searchFieldProps?.expands ?? false,
-                maxLengthEnforcement: widget.searchFieldProps?.maxLengthEnforcement,
+                maxLengthEnforcement:
+                    widget.searchFieldProps?.maxLengthEnforcement,
                 maxLength: widget.searchFieldProps?.maxLength,
-                onAppPrivateCommand: widget.searchFieldProps?.onAppPrivateCommand,
+                onAppPrivateCommand:
+                    widget.searchFieldProps?.onAppPrivateCommand,
                 inputFormatters: widget.searchFieldProps?.inputFormatters,
                 enabled: widget.searchFieldProps?.enabled,
                 cursorWidth: widget.searchFieldProps?.cursorWidth ?? 2.0,
@@ -440,13 +458,16 @@ class _SelectDialogState<T> extends State<SelectDialog<T>> {
                 cursorRadius: widget.searchFieldProps?.cursorRadius,
                 cursorColor: widget.searchFieldProps?.cursorColor,
                 selectionHeightStyle:
-                    widget.searchFieldProps?.selectionHeightStyle ?? ui.BoxHeightStyle.tight,
+                    widget.searchFieldProps?.selectionHeightStyle ??
+                        ui.BoxHeightStyle.tight,
                 selectionWidthStyle:
-                    widget.searchFieldProps?.selectionWidthStyle ?? ui.BoxWidthStyle.tight,
+                    widget.searchFieldProps?.selectionWidthStyle ??
+                        ui.BoxWidthStyle.tight,
                 keyboardAppearance: widget.searchFieldProps?.keyboardAppearance,
-                scrollPadding: widget.searchFieldProps?.scrollPadding ?? const EdgeInsets.all(20.0),
-                dragStartBehavior:
-                    widget.searchFieldProps?.dragStartBehavior ?? DragStartBehavior.start,
+                scrollPadding: widget.searchFieldProps?.scrollPadding ??
+                    const EdgeInsets.all(20.0),
+                dragStartBehavior: widget.searchFieldProps?.dragStartBehavior ??
+                    DragStartBehavior.start,
                 enableInteractiveSelection:
                     widget.searchFieldProps?.enableInteractiveSelection ?? true,
                 selectionControls: widget.searchFieldProps?.selectionControls,
@@ -485,7 +506,8 @@ class _SelectDialogState<T> extends State<SelectDialog<T>> {
               constraints: BoxConstraints(minWidth: constraints.maxWidth),
               child: Row(
                   mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: widget.favoriteItemsAlignment ?? MainAxisAlignment.start,
+                  mainAxisAlignment:
+                      widget.favoriteItemsAlignment ?? MainAxisAlignment.start,
                   children: favoriteItems
                       .map(
                         (f) => InkWell(
@@ -517,11 +539,12 @@ class _SelectDialogState<T> extends State<SelectDialog<T>> {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 8, vertical: 6),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10), color: Theme.of(context).primaryColorLight),
+          borderRadius: BorderRadius.circular(10),
+          color: Theme.of(context).primaryColorLight),
       child: Text(
         _selectedItemAsString(item),
         textAlign: TextAlign.center,
-        style: Theme.of(context).textTheme.subtitle1,
+        style: Theme.of(context).textTheme.bodyMedium,
       ),
     );
   }
@@ -546,6 +569,7 @@ class Debouncer {
 
   void call(Function action) {
     _timer?.cancel();
-    _timer = Timer(delay ?? const Duration(milliseconds: 500), action as void Function());
+    _timer = Timer(
+        delay ?? const Duration(milliseconds: 500), action as void Function());
   }
 }

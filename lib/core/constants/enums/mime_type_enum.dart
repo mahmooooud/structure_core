@@ -1,7 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:structure_core/core/constants/enums/file_type_enum.dart';
+import 'package:ndf/core/constants/enums/file_type_enum.dart';
 
-enum MimeTypeEnum{
+enum MimeTypeEnum {
   /// image mimeType
 
   @JsonValue('image/png')
@@ -27,6 +27,7 @@ enum MimeTypeEnum{
 
   @JsonValue('image/vnd.microsoft.icon')
   ico('image/vnd.microsoft.icon'),
+
   /// video mimeType
 
   @JsonValue('video/ogg')
@@ -51,25 +52,28 @@ enum MimeTypeEnum{
 
   // file mimeType
 
-
   @JsonValue('application/msword')
   doc('application/msword'),
-  @JsonValue('application/vnd.openxmlformats-officedocument.wordprocessingml.document')
-
-  docx('application/vnd.openxmlformats-officedocument.wordprocessingml.document'),
+  @JsonValue(
+      'application/vnd.openxmlformats-officedocument.wordprocessingml.document')
+  docx(
+      'application/vnd.openxmlformats-officedocument.wordprocessingml.document'),
   @JsonValue('application/pdf')
   pdf('application/pdf'),
 
   @JsonValue('application/vnd.ms-powerpoint')
   ppt('application/vnd.ms-powerpoint'),
 
-  @JsonValue('application/vnd.openxmlformats-officedocument.presentationml.presentation')
-  pptx('application/vnd.openxmlformats-officedocument.presentationml.presentation'),
+  @JsonValue(
+      'application/vnd.openxmlformats-officedocument.presentationml.presentation')
+  pptx(
+      'application/vnd.openxmlformats-officedocument.presentationml.presentation'),
 
   @JsonValue('application/vnd.ms-excel')
   xls('application/vnd.ms-excel'),
 
-  @JsonValue('application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+  @JsonValue(
+      'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
   xlsx('application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'),
 
   @JsonValue('application/xml')
@@ -98,10 +102,8 @@ enum MimeTypeEnum{
 
   other("*/*");
 
-
-
   bool _isImage() {
-    switch (this){
+    switch (this) {
       case MimeTypeEnum.png:
       case MimeTypeEnum.jpg:
       case MimeTypeEnum.jpgStream:
@@ -117,7 +119,7 @@ enum MimeTypeEnum{
   }
 
   bool _isVideo() {
-    switch (this){
+    switch (this) {
       case MimeTypeEnum.ogg:
       case MimeTypeEnum.webm:
       case MimeTypeEnum.flv:
@@ -133,18 +135,16 @@ enum MimeTypeEnum{
     }
   }
 
-
-  FileTypeEnum getFileType(){
-    if(_isImage()) {
+  FileTypeEnum getFileType() {
+    if (_isImage()) {
       return FileTypeEnum.image;
-    } else if(_isVideo()) {
+    } else if (_isVideo()) {
       return FileTypeEnum.video;
-    } else{
+    } else {
       return FileTypeEnum.file;
     }
   }
 
   final String mediaType;
   const MimeTypeEnum(this.mediaType);
-
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:structure_core/core/ui/loading_widget.dart';
-import 'package:structure_core/core/ui/show_error_widget.dart';
+import 'package:ndf/core/common/resource.dart';
+
 import 'base_bloc.dart';
 import 'base_state.dart';
 
@@ -26,12 +26,12 @@ class BaseBlocBuilder<T> extends StatelessWidget {
       buildWhen: (previous, current) => previous != current,
       builder: (_, state) {
         return state.maybeWhen(
-          orElse: () => SizedBox(width: 0,height: 0,),
+          orElse: () => Gaps.empty,
           success: (data) {
             return onSuccessWidget(data!);
           },
           loading: () => onLoadingWidget ?? const LoadingWidget(),
-          failure: (_, __) => onFailedWidget ?? ShowErrorWidget(state: state, actionText: "Go Home",),
+          failure: (_, __) => onFailedWidget ?? ShowErrorWidget(state: state),
         );
       },
     );

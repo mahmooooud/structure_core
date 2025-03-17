@@ -1,3 +1,4 @@
+import 'package:ndf/core/localization/translate.dart';
 
 import 'base_error.dart';
 
@@ -8,7 +9,7 @@ class BadRequestError extends BaseError {
 
   @override
   String toString() {
-    return message ?? "BAD REQUEST";
+    return message ?? Translate.s.error_BadRequest_Error;
   }
 
   @override

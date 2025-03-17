@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ndf/core/common/extension/context.dart';
 
 class BackButtonWidget extends StatelessWidget {
   final Color? color;
@@ -18,7 +19,7 @@ class BackButtonWidget extends StatelessWidget {
         child: Center(
           child: Icon(
             Icons.arrow_back,
-            color: color ?? Theme.of(context).colorScheme.primary,
+            color: color ?? context.colors.primary,
             size: 25,
           ),
         ),

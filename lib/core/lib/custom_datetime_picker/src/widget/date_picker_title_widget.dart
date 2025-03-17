@@ -101,7 +101,7 @@ class DatePickerTitleWidget extends StatelessWidget {
       child: TextButton(
         child: confirmWidget,
         style: TextButton.styleFrom(
-          primary: Theme.of(context).primaryColor,
+          backgroundColor: Theme.of(context).primaryColor,
         ),
         onPressed: () => this.onConfirm(),
       ),

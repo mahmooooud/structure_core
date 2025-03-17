@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:structure_core/core/common/custom_input_decoration.dart';
+import 'package:ndf/core/common/custom_input_decoration.dart';
+import 'package:ndf/core/common/resource.dart';
 
 class AppTextFormField extends StatelessWidget {
   final GlobalKey<FormFieldState<String>>? formKey;
@@ -86,14 +87,14 @@ class AppTextFormField extends StatelessWidget {
         paste: true,
         selectAll: true,
       ),
-      cursorColor: Theme.of(context).colorScheme.primary,
+      cursorColor: context.colors.primary,
       style: TextStyle(
-          color: Theme.of(context).colorScheme.primary,
-          fontSize: Theme.of(context).textTheme.headline6!.fontSize),
+          color: context.colors.primary,
+          fontSize: context.textTheme.bodyMedium!.fontSize),
       decoration: CustomInputDecoration(
         hint: hintText,
         enableColor: enableColor,
-        focsColor: focsColor ?? Theme.of(context).colorScheme.primary,
+        focsColor: focsColor ?? context.colors.primary,
         customFillColor: fillColor,
         padding: contentPadding,
         labelTxt: labelText,

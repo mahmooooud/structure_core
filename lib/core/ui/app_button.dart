@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ndf/core/common/extension/context.dart';
+import 'package:ndf/core/theme/color/app_colors.dart';
 
 class AppTextButton extends StatelessWidget {
   const AppTextButton({
@@ -10,6 +12,7 @@ class AppTextButton extends StatelessWidget {
     this.isTransparentBackground = false,
     this.enabled = true,
     this.color,
+    this.textStyle,
   }) : super(key: key);
 
   final String text;
@@ -18,6 +21,7 @@ class AppTextButton extends StatelessWidget {
   final double? width;
   final bool isTransparentBackground;
   final Color? color;
+  final TextStyle? textStyle;
 
   @override
   Widget build(BuildContext context) {
@@ -28,50 +32,46 @@ class AppTextButton extends StatelessWidget {
         enable: enabled && onPressed != null,
         child: TextButton(
           style: Theme.of(context).textButtonTheme.style!.copyWith(
-            foregroundColor: MaterialStateProperty.resolveWith(
-              (_) {
-                if (isTransparentBackground) {
-                  return Colors.transparent;
-                }
-                return Theme.of(context).colorScheme.primary;
-              },
-            ),
-            backgroundColor: MaterialStateProperty.resolveWith(
-              (states) {
-                if (color != null) {
-                  return color;
-                }
-                if (isTransparentBackground) {
-                  return Colors.transparent;
-                }
-                if (enabled) {
-                  return Theme.of(context).colorScheme.primary;
-                } else {
-                  return Colors.grey.withOpacity(0.12);
-                }
-              },
-            ),
-            shape: MaterialStateProperty.resolveWith((states) {
+              foregroundColor: MaterialStateProperty.resolveWith(
+            (_) {
               if (isTransparentBackground) {
-                return  RoundedRectangleBorder(side: BorderSide(
-                    color: Theme.of(context).colorScheme.primary
-                ),
-                borderRadius: BorderRadius.circular(5)
-                );
+                return Colors.transparent;
               }
-            })
-          ),
+              return AppColors.of(context).primary;
+            },
+          ), backgroundColor: MaterialStateProperty.resolveWith(
+            (states) {
+              if (color != null) {
+                return color;
+              }
+              if (isTransparentBackground) {
+                return Colors.transparent;
+              }
+              if (enabled) {
+                return AppColors.of(context).primary;
+              } else {
+                return AppColors.of(context).grey.withOpacity(0.12);
+              }
+            },
+          ), shape: MaterialStateProperty.resolveWith((states) {
+            if (isTransparentBackground) {
+              return RoundedRectangleBorder(
+                  side: BorderSide(color: AppColors.of(context).primary),
+                  borderRadius: BorderRadius.circular(5));
+            }
+          })),
           onPressed: onPressed,
           child: Text(
             text,
-            style: Theme.of(context).textTheme.headline6!.copyWith(
-              color: isTransparentBackground
-                  ? Theme.of(context).colorScheme.onPrimary
-                  : (enabled
-                      ? Colors.white
-                      : Colors.grey.withOpacity(0.4)),
-              fontWeight: FontWeight.w500,
-            ),
+            style: textStyle ??
+                context.textTheme.bodyMedium!.copyWith(
+                  color: isTransparentBackground
+                      ? AppColors.of(context).titleGrey
+                      : (enabled
+                          ? Colors.white
+                          : AppColors.of(context).grey.withOpacity(0.4)),
+                  fontWeight: FontWeight.w500,
+                ),
           ),
         ),
       ),

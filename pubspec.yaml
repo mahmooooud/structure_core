@@ -1,118 +1,232 @@
-name: structure_core
-description: A Flutter clean structure using BLOC and CUBIT.
-version: 0.0.2
-homepage: https://github.com/mahmooooud/structure_core.git
+name: ndf
+description: "A new Flutter project."
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+version: 1.0.0+1
+
+
 
 environment:
-  sdk: '>=3.1.1 <4.0.0'
-  flutter: '>=3.3.0'
+  sdk: '>=3.6.1 <4.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
-  plugin_platform_interface: ^2.0.2
+  flutter_localizations:
+    sdk: flutter
+
+  #  google_fonts: ^3.0.1
+  # Localization dependency
+  intl: ^0.19.0
+  # State management
   flutter_bloc: ^8.1.1
-  equatable: ^2.0.5
-  freezed_annotation: ^2.1.0
-  json_annotation: ^4.6.0
+
+  rxdart: ^0.27.7
+  dotted_line: ^3.1.0
+  collection: ^1.16.0
+  syncfusion_flutter_charts: ^24.1.46
+  # Service Locator
   get_it: ^7.2.0
+
+  # njectable is a convenient code generator for get_it
   injectable: ^2.3.2
+  # prints beautiful logs
   logger: ^2.0.2+1
+  geolocator: ^9.0.2
+  # shared preferences
   shared_preferences: ^2.0.15
-  dio: ^4.0.6
-  http: ^0.13.5
-  pretty_dio_logger: ^1.1.1
+  cloud_firestore: ^4.10.0
+
   flutter_svg: ^2.0.9
-  adaptive_theme: ^3.1.1
-  file_picker: any
-  permission_handler: ^11.0.1
-  device_info_plus: ^8.2.2
-  jiffy: ^5.0.0
-  intl: ^0.18.0
-  flutter_screenutil: ^5.9.0
-  auto_route: ^7.8.4
-  flutter_rounded_date_picker: ^3.0.2
-  fluttertoast: ^8.0.9
-  package_info_plus: any
-  path_provider: ^2.0.11
-  flutter_spinkit: ^5.2.0
-  flutter_easyloading: ^3.0.5
-  open_file: ^3.3.2
-  infinite_scroll_pagination: ^4.0.0
+  flutter_widget_from_html: ^0.14.9
+  pdfx: ^2.8.0
+  signature: ^5.5.0
+  flutter_datetime_picker: ^1.5.1
+  local_auth: ^2.3.0
+
   pin_code_fields: ^8.0.1
   dropdown_search: ^5.0.6
   hijri: ^3.0.0
   flutter_switch: ^0.3.2
-  tf_dio_cache: ^1.0.1
-  flutter_timezone: ^1.0.8
+  country_code_picker: ^3.0.0
+  flutter_image_compress: ^2.4.0
+
+  #  Http client for Dart
+  dio: ^4.0.6
+  http: ^0.13.5
+  # Pretty Dio logger is a Dio interceptor that logs network calls in a pretty, easy to read format
+  pretty_dio_logger: ^1.1.1
+  # adapting screen and font size
+  flutter_screenutil: ^5.9.0
+  # launching a URL in the mobile platform. Supports iOS and Android.
+  url_launcher: ^6.1.5
+  # This Flutter plugin provides an API for querying information about an application package.
+  package_info_plus: any
+  # A Flutter plugin for finding commonly used locations on the filesystem.
+  # Supports iOS, Android, Linux and MacOS. Not all methods are supported on all platforms.
+  path_provider: ^2.0.11
+  # A set of high-level APIs over PointyCastle for two-way cryptography.
+  # Flutter Modal Bottom Sheet
+  modal_bottom_sheet: ^2.1.0
+  # a Flutter navigation package, it allows for strongly-typed arguments passing,
+  # effortless deep-linking and it uses code generation to simplify routes setup
+  auto_route: ^7.8.4
+  auto_route_generator: ^7.3.2
+  flutter_secure_storage: ^9.2.4
+
+  # Being able to compare objects in Dart often involves having to override the == operator as well as hashCode.
+  equatable: ^2.0.5
+  flutter_spinbox: ^0.13.1
+
+  # A Flutter plugin for iOS and Android for picking images from the image library, and taking new pictures with the camera.
+  image_picker: ^1.0.4
+
+  cupertino_icons: ^1.0.5
+
+  freezed_annotation: ^2.1.0
+  json_annotation: ^4.6.0
+  platform: ^3.1.0
+  timeago: ^3.3.0
+
+  fluttertoast: ^8.0.9
+  bot_toast: ^4.1.3
+  #Flutter plugin for Firebase Core, enabling connecting to multiple Firebase apps.
+  firebase_core:
+  firebase_core_platform_interface: ^5.0.0
+  #Flutter plugin for Firebase Cloud Messaging,
+  firebase_messaging: ^14.7.6
+  #A cross platform plugin for displaying and scheduling local notifications
+  flutter_local_notifications: ^17.0.0
+
+  #This plugin allows Flutter apps to discover network connectivity and configure themselves accordingly
   connectivity_plus: ^5.0.2
   internet_connection_checker: ^1.0.0+1
-  url_launcher: ^6.1.5
-  mime: ^1.0.2
+  archive: ^3.3.1
+  pinch_zoom_image_last: ^0.4.1
+  device_info_plus: ^10.1.2
+  pay: ^2.0.0
+  #
+  #Dio-http-cache uses sqflite as disk cache, and LRU strategy as memory cache.
+  #flutter_html
+  #Inspired by flutter_cache_manager.
+  tf_dio_cache: ^1.0.1
+
+  #Now this toast library supports two kinds of toast messages one which requires BuildContext
+  #other with No BuildContext
+
+
+  #This plugin provides a cross-platform (iOS, Android) API to request permissions and check their status.
+  permission_handler: ^11.0.1
+
+  #A package that allows you to use the native file explorer to pick single or multiple files.
+
+  #Draw SVG
+
+  flutter_easyloading: ^3.0.5
+  pdf: ^3.11.3
+  photo_view: ^0.15.0
+  flutter_carousel_widget: 3.1.0
+
+  # list pagination
+  infinite_scroll_pagination: ^4.0.0
+
+  # to build persistent animated tab bar
+  persistent_bottom_nav_bar_v2:
+    git: https://github.com/ahmed20142015/PersistentBottomNavBarV2
+
+  # animated loader
+  #  flutter_shimmer: ^2.1.2
   shimmer: ^3.0.0
+
+  # for datetime picker
+  flutter_rounded_date_picker: ^3.0.2
+  month_year_picker: ^0.4.0+1
   cached_network_image: ^3.2.1
-  build_runner: ^2.2.0
+  dropdown_button2: ^2.3.9
+
+  # open file in app
+  open_file: ^3.2.1
+  # for create animated floating action button
+  flutter_speed_dial: ^7.0.0
+  flutter_rating_bar: ^4.0.1
+  # for time ago
+  jiffy: ^6.2.2
+
+  # Easiest way to add support for light and dark theme in your Flutter app. It allows to manually
+  # set light or dark theme and also lets you define themes based on the system. It also persists
+  # the theme modes changes across app restarts.
+  adaptive_theme: ^3.1.1
+  # Determining the MIME type for a file
+  mime: ^1.0.2
+#  geolocator: ^10.1.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
+  build_runner: ^2.2.0
+  json_serializable: ^6.3.1
+  freezed: ^2.1.0+1
+  flutter_lints: ^3.0.1
 
-# For information on the generic Dart part of this file, see the
-# following page: https://dart.dev/tools/pub/pubspec
+  # TEST Mock library for Dart inspired by Mockito.
+  mockito: ^5.3.0
+  injectable_generator: ^2.4.1
+  code_builder: ^4.2.0
+  scroll_date_picker: ^3.6.1
+  app_settings: ^5.1.1
+  flutter_animate: ^4.5.0
+  flutter_timezone: ^1.0.8
 
-# The following section is specific to Flutter packages.
+  #dependency_overrides:
+  #  code_builder: ^4.2.0
+  percent_indicator: ^4.2.3
+  geocoding: ^3.0.0
+  #  flutter_quill: ^10.7.6
+  dotted_border: ^2.1.0
+  table_calendar: ^3.0.9
+  webview_flutter: ^4.2.3
+  timer_count_down: ^2.2.2
+  signalr_core: ^1.1.1
+  flutter_map_pick_route_sherifammar: ^0.0.7
+  google_maps_flutter: ^2.10.0
+  flutter_blue_plus: ^1.35.2
+  firebase_analytics: ^10.0.0
+  file_picker: ^9.0.0
+  # flutter_splendid_ble: ^0.14.0
+  flutter_compass: ^0.8.1
+#  chucker_flutter: ^1.8.1
+
+flutter_intl:
+  main_locale: en_US
+  enabled: true
+
 flutter:
-  # This section identifies this Flutter project as a plugin project.
-  # The 'pluginClass' specifies the class (in Java, Kotlin, Swift, Objective-C, etc.)
-  # which should be registered in the plugin registry. This is required for
-  # using method channels.
-  # The Android 'package' specifies package in which the registered class is.
-  # This is required for using method channels on Android.
-  # The 'ffiPlugin' specifies that native code should be built and bundled.
-  # This is required for using `dart:ffi`.
-  # All these are used by the tooling to maintain consistency when
-  # adding or updating assets for this project.
-  plugin:
-    platforms:
-      android:
-        package: com.future_face.structure_core
-        pluginClass: StructureCorePlugin
-      ios:
-        pluginClass: StructureCorePlugin
-      linux:
-        pluginClass: StructureCorePlugin
-      macos:
-        pluginClass: StructureCorePlugin
-      windows:
-        pluginClass: StructureCorePluginCApi
+  uses-material-design: true
 
-  # To add assets to your plugin package, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
-  #
-  # For details regarding assets in packages, see
-  # https://flutter.dev/assets-and-images/#from-packages
-  #
-  # An image asset can refer to one or more resolution-specific "variants", see
-  # https://flutter.dev/assets-and-images/#resolution-aware
+  assets:
+    - assets/config/
+    - assets/icons/
+    - assets/images/
+    - assets/web_lang/
+  fonts:
+    - family: PublicSans
+      fonts:
+        - asset: assets/fonts/Almarai-Regular.ttf
+        - asset: assets/fonts/PublicSans-Bold.otf
+        - asset: assets/fonts/PublicSans-ThinItalic.otf
+        - asset: assets/fonts/PublicSans-Thin.otf
+        - asset: assets/fonts/PublicSans-SemiBoldItalic.otf
+        - asset: assets/fonts/PublicSans-SemiBold.otf
+        - asset: assets/fonts/PublicSans-Regular.otf
+        - asset: assets/fonts/PublicSans-MediumItalic.otf
+        - asset: assets/fonts/PublicSans-Medium.otf
+        - asset: assets/fonts/PublicSans-Light.otf
+    - family: PublicSans
+      fonts:
+        - asset: assets/fonts/Tajawal-Black.ttf
+        - asset: assets/fonts/Tajawal-Bold.ttf
+        - asset: assets/fonts/Tajawal-ExtraBold.ttf
+        - asset: assets/fonts/Tajawal-ExtraLight.ttf
+        - asset: assets/fonts/Tajawal-Light.ttf
+        - asset: assets/fonts/Tajawal-Regular.ttf
+        - asset: assets/fonts/Tajawal-Medium.ttf
 
-  # To add custom fonts to your plugin package, add a fonts section here,
-  # in this "flutter" section. Each entry in this list should have a
-  # "family" key with the font family name, and a "fonts" key with a
-  # list giving the asset and other descriptors for the font. For
-  # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
-  #
-  # For details regarding fonts in packages, see
-  # https://flutter.dev/custom-fonts/#from-packages

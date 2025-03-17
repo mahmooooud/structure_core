@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:ndf/core/common/extension/context.dart';
+import 'package:ndf/core/theme/color/app_colors.dart';
+import 'package:ndf/core/ui/svg_assets.dart';
+import 'package:ndf/res.dart';
 
 class CustomSearchField extends StatelessWidget {
   final TextInputType inputType;
@@ -40,7 +46,7 @@ class CustomSearchField extends StatelessWidget {
       controller: controller,
       onSaved: onSave,
       validator: validator,
-      cursorColor: Theme.of(context).colorScheme.surface,
+      cursorColor: AppColors.of(context).grey,
       showCursor: true,
       textAlign: TextAlign.start,
       keyboardType: TextInputType.emailAddress,
@@ -50,67 +56,55 @@ class CustomSearchField extends StatelessWidget {
       autovalidateMode: AutovalidateMode.onUserInteraction,
       obscureText: obscureText && isHiddenPassword,
       obscuringCharacter: obscuringCharacter,
-      style: Theme.of(context).textTheme.bodyText1!.copyWith(
-          color: Theme.of(context).colorScheme.surface,
-          fontWeight: FontWeight.w300,
-          fontSize: 12,
+      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+          color: AppColors.of(context).titleBlack,
+          fontWeight: FontWeight.w500,
+          fontSize: 20.sp,
           fontFamily: 'CAIRO'),
       decoration: decoration ??
           InputDecoration(
             hintText: hint,
-            hintStyle: Theme.of(context).textTheme.bodyText1!.copyWith(
-                  color: Theme.of(context).colorScheme.surface.withOpacity(.7),
+            hintStyle: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                  color: AppColors.of(context).iconGrey,
                   fontWeight: FontWeight.w300,
                   fontSize: 20,
                 ),
-            border: const OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(24)),
-              borderSide: BorderSide(color: Color(0xffE3E3E3), width: 1),
+            border: OutlineInputBorder(
+              borderRadius: const BorderRadius.all(Radius.circular(50)),
+              borderSide:
+                  BorderSide(color: context.colors.borderGrey, width: 1),
             ),
-            enabledBorder: const OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(24)),
-              borderSide: BorderSide(color: Color(0xffE3E3E3), width: 1),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: const BorderRadius.all(Radius.circular(50)),
+              borderSide:
+                  BorderSide(color: context.colors.borderGrey, width: 1),
             ),
-            focusedBorder: const OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(24)),
-              borderSide: BorderSide(color: Color(0xffE3E3E3), width: 1),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: const BorderRadius.all(Radius.circular(50)),
+              borderSide:
+                  BorderSide(color: context.colors.borderGrey, width: 1),
             ),
             errorBorder: const OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(24)),
+              borderRadius: BorderRadius.all(Radius.circular(50)),
               borderSide: BorderSide(color: Colors.red, width: 1),
             ),
             focusedErrorBorder: const OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(24)),
+              borderRadius: BorderRadius.all(Radius.circular(50)),
               borderSide: BorderSide(color: Colors.red, width: 1),
             ),
-            disabledBorder: const OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(24)),
-              borderSide: BorderSide(color: Color(0xffE3E3E3), width: 1),
+            disabledBorder: OutlineInputBorder(
+              borderRadius: const BorderRadius.all(Radius.circular(50)),
+              borderSide:
+                  BorderSide(color: context.colors.borderGrey, width: 1),
             ),
-            fillColor: Colors.white,
+            fillColor: context.colors.grey.withOpacity(.05),
             filled: true,
-            contentPadding:
-                const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
-            prefixIcon: Icon(
-              Icons.search,
-              color: Theme.of(context).colorScheme.surface,
+            contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 5),
+            prefixIcon: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: SvgAssets.getWidget(Res.search,
+                  fit: BoxFit.contain, width: 18, height: 18),
             ),
-            // suffixIcon: obscureText
-            //     ? GestureDetector(
-            //   onTap: onTapShowHidePassword,
-            //   child: isHiddenPassword
-            //       ? const Icon(
-            //     Icons.visibility_off,
-            //     size: 24,
-            //     color: Color(ColorCode.eye),
-            //   )
-            //       : const Icon(
-            //     Icons.visibility,
-            //     size: 24,
-            //     color: Color(ColorCode.eye),
-            //   ),
-            // )
-            //     : null,
           ),
     );
   }

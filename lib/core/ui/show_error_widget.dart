@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:structure_core/core/errors/cancel_error.dart';
-import 'package:structure_core/core/errors/connection_error.dart';
+import 'package:ndf/core/errors/cancel_error.dart';
+import 'package:ndf/core/errors/connection_error.dart';
+import 'package:ndf/core/localization/translate.dart';
 import '../bloc/base_bloc/base_state.dart';
 import '../errors/bad_request_error.dart';
 import '../errors/custom_error.dart';
@@ -13,8 +14,8 @@ import 'status_pages/page_error_view.dart';
 
 class ShowErrorWidget extends StatelessWidget {
   final BaseState state;
-  final String actionText;
-  const ShowErrorWidget({Key? key, required this.state, required this.actionText}) : super(key: key);
+
+  const ShowErrorWidget({Key? key, required this.state}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,17 +25,15 @@ class ShowErrorWidget extends StatelessWidget {
       // Connection Error
       if (error is ConnectionError) {
         return PageErrorView(
-          errorMessage: "An error occurred during the connection",
+          errorMessage: Translate.s.error_connection,
           action: callback,
           actionName: 'TryAgain',
-          actionText: actionText,
         );
       }
       // Custom Error
       else if (error is CustomError) {
         return PageErrorView(
           errorMessage: error.message,
-          actionText: actionText,
         );
       }
       // Unauthorized Error
@@ -45,21 +44,18 @@ class ShowErrorWidget extends StatelessWidget {
       else if (error is NotFoundError) {
         return PageErrorView(
           errorMessage: error.message!,
-          actionText: actionText,
         );
       }
       // Bad Request Error
       else if (error is BadRequestError) {
         return PageErrorView(
           errorMessage: error.message!,
-          actionText: actionText,
         );
       }
       // Forbidden Error
       else if (error is ForbiddenError) {
         return PageErrorView(
           errorMessage: error.toString(),
-          actionText: actionText,
         );
       }
       // Internal Server Error
@@ -68,28 +64,24 @@ class ShowErrorWidget extends StatelessWidget {
           action: callback,
           actionName: 'TryAgain',
           errorMessage: error.message!,
-          actionText: actionText,
         );
       } else if (error is TimeoutError) {
         return PageErrorView(
           action: callback,
           actionName: 'TryAgain',
           errorMessage: error.toString(),
-          actionText: actionText,
         );
       } else if (error is CancelError) {
         return PageErrorView(
           action: callback,
           actionName: 'TryAgain',
           errorMessage: error.toString(),
-          actionText: actionText,
         );
       }
       return PageErrorView(
         action: callback,
-        actionName: "AN UNEXPECTED ERROR OCCURRED",
+        actionName: Translate.s.error_general,
         errorMessage: error.toString(),
-        actionText: actionText,
       );
     });
   }

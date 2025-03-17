@@ -1,5 +1,5 @@
-import 'package:structure_core/core/filter/base/base_filter_part.dart';
-import 'package:structure_core/core/filter/sort/sort_item.dart';
+import 'package:ndf/core/filter/base/base_filter_part.dart';
+import 'package:ndf/core/filter/sort/sort_item.dart';
 
 class SortFilter implements BaseFilterPart {
   final List<SortItem> _items = [];
@@ -11,7 +11,6 @@ class SortFilter implements BaseFilterPart {
   void addItem(SortItem item) {
     _items.add(item);
   }
-
 
   void clear() {
     _items.clear();
@@ -27,5 +26,4 @@ class SortFilter implements BaseFilterPart {
       };
     }
   }
-
 }

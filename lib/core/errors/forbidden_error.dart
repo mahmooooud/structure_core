@@ -1,3 +1,4 @@
+import 'package:ndf/core/localization/translate.dart';
 import 'base_error.dart';
 
 class ForbiddenError extends BaseError {
@@ -5,6 +6,6 @@ class ForbiddenError extends BaseError {
 
   @override
   String toString() {
-    return "YOU DO NOT HAVE PRIVILEGE";
+    return Translate.s.error_forbidden_error;
   }
 }

@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:structure_core/core/errors/base_error.dart';
 
+import '../errors/base_error.dart';
 
 part 'result.freezed.dart';
 

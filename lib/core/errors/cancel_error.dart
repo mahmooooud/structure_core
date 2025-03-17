@@ -1,3 +1,4 @@
+import 'package:ndf/core/localization/translate.dart';
 import './base_error.dart';
 
 class CancelError extends BaseError {
@@ -5,6 +6,6 @@ class CancelError extends BaseError {
 
   @override
   String toString() {
-    return "The connection is interrupted";
+    return Translate.s.error_cancel_token;
   }
 }

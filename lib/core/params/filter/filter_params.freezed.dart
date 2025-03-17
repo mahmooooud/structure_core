@@ -29,8 +29,12 @@ mixin _$FilterParams {
   @JsonKey(name: "order", includeIfNull: false, nullable: true)
   List<String?>? get order => throw _privateConstructorUsedError;
 
+  /// Serializes this FilterParams to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of FilterParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $FilterParamsCopyWith<FilterParams> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -62,6 +66,8 @@ class _$FilterParamsCopyWithImpl<$Res, $Val extends FilterParams>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of FilterParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -90,6 +96,8 @@ class _$FilterParamsCopyWithImpl<$Res, $Val extends FilterParams>
     ) as $Val);
   }
 
+  /// Create a copy of FilterParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $FilterWhereParamsCopyWith<$Res>? get where {
@@ -131,6 +139,8 @@ class __$$FilterParamsImplCopyWithImpl<$Res>
       _$FilterParamsImpl _value, $Res Function(_$FilterParamsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FilterParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -211,12 +221,14 @@ class _$FilterParamsImpl implements _FilterParams {
             const DeepCollectionEquality().equals(other._order, _order));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, where, skip, limit,
       const DeepCollectionEquality().hash(_order));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FilterParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$FilterParamsImplCopyWith<_$FilterParamsImpl> get copyWith =>
@@ -256,8 +268,11 @@ abstract class _FilterParams implements FilterParams {
   @override
   @JsonKey(name: "order", includeIfNull: false, nullable: true)
   List<String?>? get order;
+
+  /// Create a copy of FilterParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FilterParamsImplCopyWith<_$FilterParamsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -273,8 +288,12 @@ mixin _$FilterWhereParams {
   @JsonKey(name: "type", nullable: true, includeIfNull: false)
   dynamic get type => throw _privateConstructorUsedError;
 
+  /// Serializes this FilterWhereParams to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of FilterWhereParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $FilterWhereParamsCopyWith<FilterWhereParams> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -302,6 +321,8 @@ class _$FilterWhereParamsCopyWithImpl<$Res, $Val extends FilterWhereParams>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of FilterWhereParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -344,6 +365,8 @@ class __$$FilterWhereParamsImplCopyWithImpl<$Res>
       $Res Function(_$FilterWhereParamsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of FilterWhereParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -395,14 +418,16 @@ class _$FilterWhereParamsImpl implements _FilterWhereParams {
             const DeepCollectionEquality().equals(other.type, type));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(state),
       const DeepCollectionEquality().hash(type));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of FilterWhereParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$FilterWhereParamsImplCopyWith<_$FilterWhereParamsImpl> get copyWith =>
@@ -433,8 +458,11 @@ abstract class _FilterWhereParams implements FilterWhereParams {
   @override
   @JsonKey(name: "type", nullable: true, includeIfNull: false)
   dynamic get type;
+
+  /// Create a copy of FilterWhereParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FilterWhereParamsImplCopyWith<_$FilterWhereParamsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

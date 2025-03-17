@@ -1,5 +1,7 @@
+import 'package:ndf/feature/auth/data/models/user_model/login_request_model.dart';
+import 'package:ndf/feature/auth/data/models/user_model/user_model.dart';
 
-abstract class ICoreSpHelper {
+abstract class ISpHelper {
   /// deleteToken
   Future<void> deleteToken();
 
@@ -56,6 +58,9 @@ abstract class ICoreSpHelper {
 
   /// should be set true after the first time run the app
   Future<void> writeIsAnonymousToken(bool value);
+  Future<void> writeUserBiometricData(LoginRequestModel value);
+  Future<void> deleteUserBiometricData();
+  Future<LoginRequestModel?> readUserBiometricData();
 
   /// if null or false so user first time run the app
   Future<bool> get isAnonymousToken;
@@ -69,29 +74,32 @@ abstract class ICoreSpHelper {
   /// get the application language from shared preferences
   Future<String?> get readAppLang;
 
-
   /// save offline requests
   Future<void> writeOfflineRequests(String data);
+
   /// should be set true after user checked in
   Future<void> writeIsCheckedIn(bool value);
+
   /// if null or false so user not checked in
   Future<bool> get isCheckedIn;
 
   /// should be set true after user checked out
   Future<void> writeIsCheckedOut(bool value);
+
   /// if null or false so user not checked out
   Future<bool> get isCheckedOut;
 
   /// should be set date after user checked
   Future<void> writeCheckedDate(DateTime dateTime);
+
   /// should return checked date
   Future<DateTime> get getCheckedDate;
 
   /// should be set max time to check in
   Future<void> writeMaxCheckIn(String time);
+
   /// should return max time to check in
   Future<String> get getMaxCheckIn;
 
   /// get font size
-  double get fontSize;
 }

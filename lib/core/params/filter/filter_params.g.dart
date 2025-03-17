@@ -17,21 +17,13 @@ _$FilterParamsImpl _$$FilterParamsImplFromJson(Map<String, dynamic> json) =>
           (json['order'] as List<dynamic>?)?.map((e) => e as String?).toList(),
     );
 
-Map<String, dynamic> _$$FilterParamsImplToJson(_$FilterParamsImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('where', instance.where?.toJson());
-  writeNotNull('skip', instance.skip);
-  writeNotNull('limit', instance.limit);
-  writeNotNull('order', instance.order);
-  return val;
-}
+Map<String, dynamic> _$$FilterParamsImplToJson(_$FilterParamsImpl instance) =>
+    <String, dynamic>{
+      if (instance.where?.toJson() case final value?) 'where': value,
+      if (instance.skip case final value?) 'skip': value,
+      if (instance.limit case final value?) 'limit': value,
+      if (instance.order case final value?) 'order': value,
+    };
 
 _$FilterWhereParamsImpl _$$FilterWhereParamsImplFromJson(
         Map<String, dynamic> json) =>
@@ -41,16 +33,8 @@ _$FilterWhereParamsImpl _$$FilterWhereParamsImplFromJson(
     );
 
 Map<String, dynamic> _$$FilterWhereParamsImplToJson(
-    _$FilterWhereParamsImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('state', instance.state);
-  writeNotNull('type', instance.type);
-  return val;
-}
+        _$FilterWhereParamsImpl instance) =>
+    <String, dynamic>{
+      if (instance.state case final value?) 'state': value,
+      if (instance.type case final value?) 'type': value,
+    };

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:ndf/core/theme/color/app_colors.dart';
 
 class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppbar(
@@ -28,7 +29,7 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       title: title,
       automaticallyImplyLeading: implyLeading,
-      backgroundColor: Colors.black,
+      backgroundColor: AppColors.of(context).black,
       actions: actions ?? [],
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
@@ -37,10 +38,10 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
       ),
       elevation: 0,
       centerTitle: false,
-      systemOverlayStyle: const SystemUiOverlayStyle(
-        statusBarIconBrightness: Brightness.dark,
-        statusBarColor: Colors.transparent,
-      ),
+      // systemOverlayStyle: const SystemUiOverlayStyle(
+      //   statusBarIconBrightness: Brightness.dark,
+      //   statusBarColor: Colors.transparent,
+      // ),
     );
   }
 

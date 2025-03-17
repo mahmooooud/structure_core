@@ -1,14 +1,16 @@
-import 'package:structure_core/core/common/gaps.dart';
-import 'package:structure_core/core/ui/h_line.dart';
-import 'package:structure_core/core/ui/main_container.dart';
-import 'package:structure_core/core/ui/shimmer/shimmer_widget.dart';
+import 'package:ndf/core/common/gaps.dart';
+import 'package:ndf/core/ui/h_line.dart';
+import 'package:ndf/core/ui/main_container.dart';
+import 'package:ndf/core/ui/shimmer/shimmer_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ListShimmer extends StatelessWidget {
   final bool isAttendance;
   final bool isNotification;
-  const ListShimmer({Key? key,this.isAttendance = false,this.isNotification = false}) : super(key: key);
+  const ListShimmer(
+      {Key? key, this.isAttendance = false, this.isNotification = false})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,7 @@ class ListShimmer extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Column(
-            children: List.generate(5, (index){
+            children: List.generate(5, (index) {
               return Column(
                 children: [
                   MainContainer(
@@ -46,43 +48,40 @@ class ListShimmer extends StatelessWidget {
                             ),
                           ],
                         ),
-                        if(!isNotification)
-                          HLine(verticalPadding: 8),
-                        if(!isNotification)
-                        Visibility(
-                          visible: isAttendance,
-                          replacement: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  ShimmerWidget(
-                                    child: SizedBox(
-                                      height: 10.h,
-                                      width: 65.w,
+                        if (!isNotification) HLine(verticalPadding: 8),
+                        if (!isNotification)
+                          Visibility(
+                            visible: isAttendance,
+                            replacement: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    ShimmerWidget(
+                                      child: SizedBox(
+                                        height: 10.h,
+                                        width: 65.w,
+                                      ),
                                     ),
-                                  ),
-
-                                ],
-                              ),
-
-                            ],
-                          ),
-                          child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            ShimmerWidget(
-                              child: SizedBox(
-                                height: 15.h,
-                                width: 65.w,
-                              ),
+                                  ],
+                                ),
+                              ],
                             ),
-
-                          ],
-                        ),
-                        )
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                ShimmerWidget(
+                                  child: SizedBox(
+                                    height: 15.h,
+                                    width: 65.w,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          )
                       ],
                     ),
                   ),

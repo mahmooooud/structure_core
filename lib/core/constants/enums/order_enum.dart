@@ -1,3 +1,4 @@
+import 'package:ndf/core/localization/translate.dart';
 
 enum OrderEnum {
   desc('DESC'),

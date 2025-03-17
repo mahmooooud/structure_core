@@ -1,5 +1,5 @@
-import 'package:structure_core/core/constants/app/app_constants.dart';
-import 'package:structure_core/core/filter/base/base_filter_part.dart';
+import 'package:ndf/core/constants/app/app_constants.dart';
+import 'package:ndf/core/filter/base/base_filter_part.dart';
 
 class PaginationFilter implements BaseFilterPart {
   int _skip;
@@ -19,8 +19,8 @@ class PaginationFilter implements BaseFilterPart {
 
   factory PaginationFilter.init() {
     return PaginationFilter(
-      skip: ApplicationConstants().paginationSkip,
-      limit: ApplicationConstants().paginationLimit,
+      skip: ApplicationConstants.paginationSkip,
+      limit: ApplicationConstants.paginationLimit,
     );
   }
 

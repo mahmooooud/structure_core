@@ -1,23 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ndf/core/common/extension/context.dart';
 
 class MainContainer extends StatelessWidget {
   MainContainer(
       {Key? key,
-        this.child,
-        this.borderRadius,
-        this.color,
-        this.height,
-        this.shadowColorGrey,
-        this.width,
-        this.border,
-        this.offset1,
-        this.padding,
-        this.margin,
-        this.offset2,
-        this.elevation = true,
-        this.decoration,
-        this.blurR})
+      this.child,
+      this.borderRadius,
+      this.color,
+      this.height,
+      this.shadowColorGrey,
+      this.width,
+      this.border,
+      this.offset1,
+      this.padding,
+      this.margin,
+      this.offset2,
+      this.elevation = true,
+      this.decoration,
+      this.blurR})
       : super(key: key);
   Widget? child;
   BorderRadius? borderRadius;
@@ -37,27 +38,32 @@ class MainContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: padding ?? const EdgeInsets.all(16),
+      padding: padding ?? EdgeInsets.all(16.r),
       margin: margin,
       clipBehavior: Clip.antiAliasWithSaveLayer,
       height: height,
       width: width ?? double.infinity,
       decoration: decoration ??
           BoxDecoration(
-              color: color ?? Colors.white,
+              color: color ?? context.colors.white,
               border: border,
-              borderRadius: border != null
-                  ? null
-                  : borderRadius ?? BorderRadius.circular(8.r),
-              boxShadow: elevation == null
+              borderRadius: borderRadius ?? BorderRadius.circular(16.r),
+              boxShadow: elevation == false
                   ? []
                   : [
-                BoxShadow(
-                    color: Theme.of(context).colorScheme.tertiary.withOpacity(.2),
-                    spreadRadius: 0,
-                    offset: const Offset(0, 12),
-                    blurRadius: blurR ?? 29),
-              ]),
+                      BoxShadow(
+                          color: context.colors.backGroundColorGrey
+                              .withOpacity(.4),
+                          spreadRadius: -1,
+                          offset: const Offset(0, 1),
+                          blurRadius: blurR ?? 1),
+                      BoxShadow(
+                          color: context.colors.backGroundColorGrey
+                              .withOpacity(.3),
+                          spreadRadius: 0,
+                          offset: const Offset(0, 1),
+                          blurRadius: blurR ?? 1),
+                    ]),
       child: child,
     );
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:ndf/core/common/resource.dart';
 
 class DimmedDropDown extends StatelessWidget {
   final String text;
@@ -9,7 +10,7 @@ class DimmedDropDown extends StatelessWidget {
   const DimmedDropDown({
     Key? key,
     required this.text,
-     this.hideLoad=false,
+    this.hideLoad = false,
   }) : super(key: key);
 
   @override
@@ -18,7 +19,7 @@ class DimmedDropDown extends StatelessWidget {
       height: 50.h,
       padding: const EdgeInsets.symmetric(horizontal: 10),
       decoration: BoxDecoration(
-          color: Colors.white,
+          color: context.colors.white,
           border: Border.all(color: const Color(0xFFD2D2D7), width: 1),
           borderRadius: const BorderRadius.all(Radius.circular(5))),
       child: Row(
@@ -27,12 +28,14 @@ class DimmedDropDown extends StatelessWidget {
         children: [
           Text(
             text,
-            style: Theme.of(context).textTheme.bodyText1!
+            style: context.textTheme.bodyMedium!
                 .copyWith(fontSize: 12, fontWeight: FontWeight.bold),
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
           ),
-          hideLoad!?Icon(Icons.keyboard_arrow_down,color: Theme.of(context).colorScheme.primary):SpinKitFadingCircle(size: 24, color: Theme.of(context).colorScheme.primary)
+          hideLoad!
+              ? Icon(Icons.keyboard_arrow_down, color: context.colors.primary)
+              : SpinKitFadingCircle(size: 24, color: context.colors.primary)
         ],
       ),
     );
