@@ -36,11 +36,11 @@ import 'dart:typed_data';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:pdf/pdf.dart';
-import 'package:pdf/widgets.dart' as pw;
-import 'package:signature/signature.dart';
-import 'package:pdfx/pdfx.dart' as pdfx;
+// import 'package:pdf/widgets.dart' as pw;
+// import 'package:signature/signature.dart';
+// import 'package:pdfx/pdfx.dart' as pdfx;
 import 'package:path_provider/path_provider.dart';
-import 'package:path/path.dart' as path; // Import the path package
+// import 'package:path/path.dart' as path; // Import the path package
 import 'package:url_launcher/url_launcher.dart';
 import '../../../../../core/ui/custom_bottom_sheet.dart';
 import '../../../../../core/ui/dialog_title_row.dart';
